@@ -660,7 +660,7 @@ const Footer = () => {
       
       <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-white/70">
         <p>© 2026 WMN Personalizados. Todos os direitos reservados.</p>
-        <p>Desenvolvido com sofisticação</p>
+        <p>Desenvolvido por UX Code ❤️</p>
       </div>
     </footer>
   );

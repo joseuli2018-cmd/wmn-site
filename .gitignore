@@ -1,0 +1,4 @@
+node_modules/
+dist/
+lighthouse-after.json
+lighthouse-prod.json

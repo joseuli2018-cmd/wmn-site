@@ -4,12 +4,8 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { 
-  MessageCircle, 
-  Heart, 
   Star, 
-  CheckCircle2, 
   Instagram, 
   ChevronRight, 
   ChevronLeft,
@@ -17,13 +13,159 @@ import {
   X,
   Sparkles,
   Award,
-  Users,
-  CheckCheck,
-  MoreVertical,
-  Phone,
-  Video,
-  ArrowLeft
+  Users
 } from 'lucide-react';
+
+const SITE_NAME = 'WMN Personalizados';
+const SITE_TITLE = 'WMN Personalizados | Robes de Luxo para Noivas e Debutantes';
+const SITE_DESCRIPTION = 'Robes personalizados de luxo para noivas, madrinhas e debutantes, com acabamento premium, bordado fino e atendimento exclusivo via WhatsApp.';
+const SITE_PHONE = '+55 51 3273-6608';
+const SITE_WHATSAPP = 'https://wa.me/555132736608';
+const SITE_INSTAGRAM = 'https://www.instagram.com/withmyname_?igsh=MXZsZDNpNTV1bmk3MA%3D%3D';
+const HERO_IMAGE = '/optimized/hero-home.webp';
+const DETAIL_IMAGE = '/optimized/detail-home.webp';
+const COLLECTION_WEDDING_IMAGE = '/optimized/collection-wedding.webp';
+const COLLECTION_DEBUT_IMAGE = '/optimized/collection-debut.webp';
+const INITIAL_GALLERY_COUNT = 12;
+
+const galleryImageModules = import.meta.glob('../Galeria/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', {
+  eager: true,
+  import: 'default'
+}) as Record<string, string>;
+
+const normalizeGalleryKey = (value: string) =>
+  value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/\.[^.]+$/, '')
+    .replace(/[^a-z0-9]+/g, '');
+
+const galleryAssets = Object.entries(galleryImageModules)
+  .map(([modulePath, src]) => {
+    const relativePath = modulePath.replace('../Galeria/', '');
+    const fileName = relativePath.split('/').pop() ?? relativePath;
+
+    return {
+      relativePath,
+      fileName,
+      normalizedPath: normalizeGalleryKey(relativePath),
+      normalizedName: normalizeGalleryKey(fileName),
+      src,
+    };
+  })
+  .sort((left, right) =>
+    left.relativePath.localeCompare(right.relativePath, undefined, {
+      numeric: true,
+      sensitivity: 'base',
+    })
+  );
+
+const findGalleryImage = (pathHint: string) => {
+  const normalizedHint = normalizeGalleryKey(pathHint);
+
+  return galleryAssets.find(
+    (asset) => asset.normalizedPath === normalizedHint || asset.normalizedName === normalizedHint
+  )?.src;
+};
+
+const fallbackGalleryImage = '/logo.png';
+
+const getGalleryImage = (pathHint: string, fallback = fallbackGalleryImage) =>
+  findGalleryImage(pathHint) ?? fallback;
+
+const debutGalleryAssets = galleryAssets.filter((asset) => asset.relativePath.startsWith('casamento/debut/'));
+const weddingGalleryAssets = galleryAssets.filter(
+  (asset) => asset.relativePath.startsWith('casamento/') && !asset.relativePath.startsWith('casamento/debut/')
+);
+const featuredProfileAssetNames = new Set(['insta01', 'foto02', 'foto03', 'foto04', 'foto05', 'foto06']);
+const weddingMomentAssets = weddingGalleryAssets.filter(
+  (asset) => !featuredProfileAssetNames.has(asset.normalizedName)
+);
+const galleryImages = [...debutGalleryAssets, ...weddingMomentAssets].map((asset) => asset.src);
+
+const upsertMetaTag = (selector: string, attributeName: 'name' | 'property', attributeValue: string, content: string) => {
+  let element = document.head.querySelector<HTMLMetaElement>(selector);
+
+  if (!element) {
+    element = document.createElement('meta');
+    element.setAttribute(attributeName, attributeValue);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute('content', content);
+};
+
+const upsertLinkTag = (selector: string, rel: string, href: string) => {
+  let element = document.head.querySelector<HTMLLinkElement>(selector);
+
+  if (!element) {
+    element = document.createElement('link');
+    element.setAttribute('rel', rel);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute('href', href);
+};
+
+const SeoMetadata = () => {
+  const origin = globalThis.location?.origin ?? 'http://localhost:3000';
+  const canonicalUrl = new URL(globalThis.location?.pathname ?? '/', origin).toString();
+  const shareImageUrl = new URL(HERO_IMAGE, origin).toString();
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    image: [shareImageUrl],
+    telephone: SITE_PHONE,
+    url: canonicalUrl,
+    areaServed: 'Brasil',
+    sameAs: [SITE_INSTAGRAM, SITE_WHATSAPP],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: SITE_PHONE,
+      contactType: 'customer service',
+      availableLanguage: ['Portuguese']
+    }
+  };
+
+  useEffect(() => {
+    document.documentElement.lang = 'pt-BR';
+    document.title = SITE_TITLE;
+
+    upsertMetaTag('meta[name="description"]', 'name', 'description', SITE_DESCRIPTION);
+    upsertMetaTag('meta[name="robots"]', 'name', 'robots', 'index,follow,max-image-preview:large');
+    upsertMetaTag('meta[property="og:title"]', 'property', 'og:title', SITE_TITLE);
+    upsertMetaTag('meta[property="og:description"]', 'property', 'og:description', SITE_DESCRIPTION);
+    upsertMetaTag('meta[property="og:type"]', 'property', 'og:type', 'website');
+    upsertMetaTag('meta[property="og:locale"]', 'property', 'og:locale', 'pt_BR');
+    upsertMetaTag('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
+    upsertMetaTag('meta[property="og:image"]', 'property', 'og:image', shareImageUrl);
+    upsertMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
+    upsertMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', SITE_TITLE);
+    upsertMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', SITE_DESCRIPTION);
+    upsertMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', shareImageUrl);
+    upsertLinkTag('link[rel="canonical"]', 'canonical', canonicalUrl);
+  }, [canonicalUrl, shareImageUrl]);
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />;
+};
+
+type OptimizedImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
+  priority?: boolean;
+  sizes?: string;
+};
+
+const OptimizedImage = ({ priority = false, loading, decoding, sizes, ...props }: OptimizedImageProps) => (
+  <img
+    {...props}
+    loading={loading ?? (priority ? 'eager' : 'lazy')}
+    decoding={decoding ?? 'async'}
+    fetchPriority={priority ? 'high' : 'auto'}
+    sizes={sizes}
+  />
+);
 
 // --- Components ---
 
@@ -44,13 +186,16 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-luxury-cream py-2 shadow-sm text-luxury-dark' : 'bg-transparent py-3 text-white'}`}>
+    <nav aria-label="Navegação principal" className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-luxury-cream py-2 shadow-sm text-luxury-dark' : 'bg-transparent py-3 text-white'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center">
-          <img 
+          <OptimizedImage 
             src="/logo.png" 
             className={`h-10 md:h-12 w-auto transition-all duration-500 ${isScrolled ? 'brightness-0' : ''}`} 
             alt="WMN Logo" 
+            width={144}
+            height={48}
+            priority
           />
         </div>
         
@@ -62,7 +207,7 @@ const Navbar = () => {
           <a href="#feedback" className="hover:text-luxury-gold transition-colors">Depoimentos</a>
           <a 
             href="https://wa.me/555132736608" 
-            className="bg-[#25D366] text-white px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2"
+            className="whatsapp-cta px-6 py-2 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center gap-2"
           >
             <WhatsAppIcon size={16} />
             WhatsApp
@@ -70,81 +215,59 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`md:hidden ${isScrolled ? 'text-luxury-dark' : 'text-white'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={isMenuOpen} aria-controls="mobile-menu" className={`md:hidden ${isScrolled ? 'text-luxury-dark' : 'text-white'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-luxury-cream border-t border-black/5 p-8 flex flex-col gap-6 text-center md:hidden text-luxury-dark"
-          >
-            <a href="#collections" onClick={() => setIsMenuOpen(false)} className="text-sm uppercase tracking-widest">Coleções</a>
-            <a href="#details" onClick={() => setIsMenuOpen(false)} className="text-sm uppercase tracking-widest">Diferenciais</a>
-            <a href="#famous" onClick={() => setIsMenuOpen(false)} className="text-sm uppercase tracking-widest">Celebridades</a>
-            <a href="#feedback" onClick={() => setIsMenuOpen(false)} className="text-sm uppercase tracking-widest">Depoimentos</a>
-            <a href="https://wa.me/555132736608" className="bg-[#25D366] text-white py-3 rounded-full uppercase text-xs tracking-widest flex items-center justify-center gap-2"><WhatsAppIcon size={16} /> Falar no WhatsApp</a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isMenuOpen && (
+        <div 
+          id="mobile-menu"
+          className="mobile-menu-enter absolute top-full left-0 w-full bg-luxury-cream border-t border-black/5 p-8 flex flex-col gap-6 text-center md:hidden text-luxury-dark"
+        >
+          <a href="#collections" onClick={() => setIsMenuOpen(false)} className="text-sm uppercase tracking-widest">Coleções</a>
+          <a href="#details" onClick={() => setIsMenuOpen(false)} className="text-sm uppercase tracking-widest">Diferenciais</a>
+          <a href="#famous" onClick={() => setIsMenuOpen(false)} className="text-sm uppercase tracking-widest">Celebridades</a>
+          <a href="#feedback" onClick={() => setIsMenuOpen(false)} className="text-sm uppercase tracking-widest">Depoimentos</a>
+          <a href="https://wa.me/555132736608" className="whatsapp-cta py-3 rounded-full uppercase text-xs tracking-widest flex items-center justify-center gap-2"><WhatsAppIcon size={16} /> Falar no WhatsApp</a>
+        </div>
+      )}
     </nav>
   );
 };
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pb-12 md:pb-0">
+    <header className="relative min-h-screen flex items-center justify-center overflow-hidden pb-12 md:pb-0">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/destaque-converte-bem.jpeg" 
-          alt="Luxury Wedding Prep" 
+        <OptimizedImage 
+          src={HERO_IMAGE} 
+          alt="Robe personalizado para making of de noiva" 
           className="w-full h-full object-cover object-top"
           referrerPolicy="no-referrer"
+          priority
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80" />
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-4xl mt-16 md:mt-20">
-        <motion.span 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-white/90 uppercase tracking-[0.4em] text-[10px] md:text-xs mb-6 block drop-shadow-md"
-        >
+        <span className="reveal-fade-up reveal-delay-1 text-white/90 uppercase tracking-[0.4em] text-[10px] md:text-xs mb-6 block drop-shadow-md">
           Elegância em cada detalhe
-        </motion.span>
-        <motion.h1 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-4xl sm:text-5xl md:text-8xl text-white mb-8 leading-[1.1] md:leading-[0.9] drop-shadow-xl font-serif"
-        >
+        </span>
+        <h1 className="reveal-fade-up reveal-delay-2 text-4xl sm:text-5xl md:text-8xl text-white mb-8 leading-[1.1] md:leading-[0.9] drop-shadow-xl font-serif">
           Seu momento de <br />
           <span className="italic text-luxury-gold drop-shadow-lg">luxo inesquecível</span>
-        </motion.h1>
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="text-white text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light drop-shadow-md"
-        >
+        </h1>
+        <p className="reveal-fade-up reveal-delay-3 text-white text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light drop-shadow-md">
           Robes de toque de seda e personalização fina para noivas, debutantes e momentos que merecem ser eternizados.
-        </motion.p>
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
+        </p>
+        <div className="reveal-fade-up reveal-delay-4 flex flex-col sm:flex-row gap-4 justify-center">
           <a 
             href="https://wa.me/555132736608" 
-            className="bg-[#25D366] text-white px-6 sm:px-10 py-4 rounded-full text-sm sm:text-base font-medium flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-[#25D366]/30 hover:scale-105 transition-all duration-500 group whitespace-nowrap"
+            className="whatsapp-cta px-6 sm:px-10 py-4 rounded-full text-sm sm:text-base font-medium flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-[#128c43]/30 hover:scale-105 transition-all duration-500 group whitespace-nowrap"
           >
             <WhatsAppIcon size={20} />
             Orçamento pelo WhatsApp
@@ -156,18 +279,14 @@ const Hero = () => {
           >
             Ver Coleções
           </a>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50"
-      >
+      <div className="floating-indicator absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50">
         <div className="w-[1px] h-12 bg-white/30 mx-auto" />
-      </motion.div>
-    </section>
+      </div>
+    </header>
   );
 };
 
@@ -176,47 +295,47 @@ const Collections = () => {
     {
       title: "Casamento: Noivas & Madrinhas",
       desc: "O making of perfeito com robes de seda personalizados para o seu grande dia.",
-      img: "/Galeria/casamento/casamento-02.jpeg",
+      img: COLLECTION_WEDDING_IMAGE,
       tag: "Casamento"
     },
     {
       title: "Debutantes 15 Anos",
       desc: "O brilho e a sofisticação para o seu dia de princesa.",
-      img: "/Galeria/casamento/debut/whatsapp-image-2026-03-12-at-17-21-47.jpeg",
+      img: COLLECTION_DEBUT_IMAGE,
       tag: "Debut"
     }
   ];
 
   return (
-    <section id="collections" className="py-16 md:py-32 px-6 bg-white">
+    <section id="collections" className="section-shell py-16 md:py-32 px-6 bg-white" aria-labelledby="collections-title">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Nossas Linhas</span>
-          <h2 className="text-3xl md:text-5xl mb-6 font-serif">Coleções Exclusivas</h2>
+          <span className="eyebrow-label uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Nossas Linhas</span>
+          <h2 id="collections-title" className="text-3xl md:text-5xl mb-6 font-serif">Coleções Exclusivas</h2>
           <div className="w-20 h-[1px] bg-luxury-gold mx-auto" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           {items.map((item, idx) => (
-            <motion.div 
+            <div 
               key={idx}
-              whileHover={{ y: -10 }}
-              className="group cursor-pointer"
+              className="group cursor-pointer transition-transform duration-300 hover:-translate-y-2"
             >
               <div className="relative aspect-[3/4] overflow-hidden rounded-2xl mb-6">
-                <img 
+                <OptimizedImage 
                   src={item.img} 
                   alt={item.title} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
+                  sizes="(min-width: 768px) 42vw, 92vw"
                 />
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold">
                   {item.tag}
                 </div>
               </div>
               <h3 className="text-2xl mb-2 group-hover:text-luxury-gold transition-colors">{item.title}</h3>
-              <p className="text-luxury-dark/60 font-light">{item.desc}</p>
-            </motion.div>
+              <p className="text-luxury-dark/75 font-light">{item.desc}</p>
+            </div>
           ))}
         </div>
       </div>
@@ -244,11 +363,11 @@ const Features = () => {
   ];
 
   return (
-    <section id="details" className="py-16 md:py-32 px-6 bg-luxury-cream">
+    <section id="details" className="section-shell py-16 md:py-32 px-6 bg-luxury-cream" aria-labelledby="details-title">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <span className="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Por que nos escolher?</span>
-          <h2 className="text-3xl md:text-5xl mb-8 leading-tight font-serif">A qualidade que o seu <br /><span className="italic">grande dia</span> exige</h2>
+          <span className="eyebrow-label uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Por que nos escolher?</span>
+          <h2 id="details-title" className="text-3xl md:text-5xl mb-8 leading-tight font-serif">A qualidade que o seu <br /><span className="italic">grande dia</span> exige</h2>
           <p className="text-luxury-dark/70 mb-12 font-light leading-relaxed">
             Não entregamos apenas robes, entregamos a moldura para as suas memórias mais preciosas. Cada peça é confeccionada com o carinho e a precisão que um momento único pede.
           </p>
@@ -260,8 +379,8 @@ const Features = () => {
                   {f.icon}
                 </div>
                 <div>
-                  <h4 className="text-xl mb-1 font-serif">{f.title}</h4>
-                  <p className="text-sm text-luxury-dark/60 font-light">{f.desc}</p>
+                  <h3 className="text-xl mb-1 font-serif">{f.title}</h3>
+                  <p className="text-sm text-luxury-dark/75 font-light">{f.desc}</p>
                 </div>
               </div>
             ))}
@@ -270,11 +389,12 @@ const Features = () => {
 
         <div className="relative">
           <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-            <img 
-              src="/destaque-muito-afeto.jpeg" 
-              alt="Detailing" 
+            <OptimizedImage 
+              src={DETAIL_IMAGE} 
+              alt="Acabamento premium em robe personalizado" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
+              sizes="(min-width: 768px) 40vw, 92vw"
             />
           </div>
           {/* Floating Badge */}
@@ -282,9 +402,9 @@ const Features = () => {
             <div className="flex text-luxury-gold mb-3 gap-1">
               {[...Array(5)].map((_, i) => <Star key={i} size={18} fill="currentColor" />)}
             </div>
-            <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-luxury-dark/50 mb-2">Qualidade Premium</p>
+            <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-luxury-dark/70 mb-2">Qualidade Premium</p>
             <p className="text-xl md:text-2xl font-serif italic text-luxury-dark leading-tight">
-              <span className="text-luxury-gold font-bold not-italic text-2xl md:text-3xl">+5.000</span><br/>
+              <span className="text-[#7a5a1f] font-bold not-italic text-2xl md:text-3xl">+5.000</span><br/>
               Noivas Felizes
             </p>
           </div>
@@ -296,42 +416,40 @@ const Features = () => {
 
 const FamousSection = () => {
   const famous = [
-    { name: "Paula Feijó", img: "/Galeria/casamento/insta-01.jpg", link: "https://www.instagram.com/paulafeijo?igsh=eGhxM3BydmRxaHox" },
-    { name: "Michelle Heiden", img: "/Galeria/casamento/foto-02.jpg", link: "https://www.instagram.com/michelleheidenn?igsh=amEwbzFubGV0a3Fq" },
-    { name: "Bruna Manzon", img: "/Galeria/casamento/foto-03.jpg", link: "https://www.instagram.com/brunamanzon?igsh=ZmZpZjNlZzVienVx" },
-    { name: "Emilly Araújo", img: "/Galeria/casamento/foto-04.jpg", link: "https://www.instagram.com/emillyaraujoc?igsh=MWl6NHUyNnY2MWFteg%3D%3D" },
-    { name: "Stéfani Bays", img: "/Galeria/casamento/foto-05.jpg", link: "https://www.instagram.com/stefanibays?igsh=MXJnc28zMXVxYXc0Yw%3D%3D" },
-    { name: "Natana de Leon", img: "/Galeria/casamento/foto-06.jpg", link: "https://www.instagram.com/natanadeleon?igsh=MTQxd3oxOXc1MTI2eA%3D%3D" },
+    { name: "Paula Feijó", img: getGalleryImage('casamento/insta-01.jpg'), link: "https://www.instagram.com/paulafeijo?igsh=eGhxM3BydmRxaHox" },
+    { name: "Michelle Heiden", img: getGalleryImage('casamento/foto-02.jpg'), link: "https://www.instagram.com/michelleheidenn?igsh=amEwbzFubGV0a3Fq" },
+    { name: "Bruna Manzon", img: getGalleryImage('casamento/foto-03.jpg'), link: "https://www.instagram.com/brunamanzon?igsh=ZmZpZjNlZzVienVx" },
+    { name: "Emilly Araújo", img: getGalleryImage('casamento/foto-04.jpg'), link: "https://www.instagram.com/emillyaraujoc?igsh=MWl6NHUyNnY2MWFteg%3D%3D" },
+    { name: "Stéfani Bays", img: getGalleryImage('casamento/foto-05.jpg'), link: "https://www.instagram.com/stefanibays?igsh=MXJnc28zMXVxYXc0Yw%3D%3D" },
+    { name: "Natana de Leon", img: getGalleryImage('casamento/foto-06.jpg'), link: "https://www.instagram.com/natanadeleon?igsh=MTQxd3oxOXc1MTI2eA%3D%3D" },
   ];
 
   return (
-    <section id="famous" className="py-16 md:py-32 px-6 bg-white overflow-hidden">
+    <section id="famous" className="section-shell py-16 md:py-32 px-6 bg-white overflow-hidden" aria-labelledby="famous-title">
       <div className="max-w-7xl mx-auto text-center">
-        <span className="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Presença VIP</span>
-        <h2 className="text-3xl md:text-5xl mb-12 font-serif">Quem já usou WMN</h2>
+        <span className="eyebrow-label uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Presença VIP</span>
+        <h2 id="famous-title" className="text-3xl md:text-5xl mb-12 font-serif">Quem já usou WMN</h2>
         
         <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-y-10 gap-x-6 md:gap-12">
           {famous.map((f, i) => (
-            <motion.a 
+            <a 
               key={i}
               href={f.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.1 }}
-              className="text-center group flex flex-col items-center"
+              className="text-center group flex flex-col items-center transition-transform duration-300 hover:-translate-y-1"
             >
               <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden mb-4 border-2 border-transparent group-hover:border-luxury-gold transition-all duration-500 p-1 mx-auto">
-                <img 
+                <OptimizedImage 
                   src={f.img} 
-                  alt={f.name} 
+                  alt="" 
                   className="w-full h-full object-cover rounded-full transition-all duration-500"
                   referrerPolicy="no-referrer"
+                  sizes="(min-width: 768px) 128px, 96px"
                 />
               </div>
-              <p className="text-xs uppercase tracking-widest font-medium text-luxury-dark/60 group-hover:text-luxury-dark transition-colors">{f.name}</p>
-            </motion.a>
+              <p className="text-xs uppercase tracking-widest font-medium text-luxury-dark/75 group-hover:text-luxury-dark transition-colors">{f.name}</p>
+            </a>
           ))}
         </div>
       </div>
@@ -409,21 +527,23 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="feedback" className="py-16 md:py-32 bg-luxury-cream overflow-hidden">
+    <section id="feedback" className="section-shell py-16 md:py-32 bg-luxury-cream overflow-hidden" aria-labelledby="feedback-title">
       <div className="max-w-7xl mx-auto">
         <div className="px-6 flex flex-col md:flex-row justify-between items-center md:items-end mb-12 md:mb-16 gap-6 text-center md:text-left">
           <div>
-            <span className="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Relatos Reais</span>
-            <h2 className="text-3xl md:text-5xl italic font-serif">O que dizem <br/>nossas clientes</h2>
+            <span className="eyebrow-label uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Relatos Reais</span>
+            <h2 id="feedback-title" className="text-3xl md:text-5xl italic font-serif">O que dizem <br/>nossas clientes</h2>
           </div>
           <div className="flex gap-4 justify-center md:justify-start">
             <button 
+              aria-label="Ver depoimentos anteriores"
               onClick={() => scroll('left')}
               className="w-12 h-12 rounded-full border border-luxury-dark/10 flex items-center justify-center hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all"
             >
               <ChevronLeft size={20} />
             </button>
             <button 
+              aria-label="Ver próximos depoimentos"
               onClick={() => scroll('right')}
               className="w-12 h-12 rounded-full border border-luxury-dark/10 flex items-center justify-center hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all"
             >
@@ -446,13 +566,11 @@ const Testimonials = () => {
                 <div 
                   className="absolute inset-0 z-[-1] opacity-[0.06]"
                   style={{
-                    backgroundImage: `url("https://storage.googleapis.com/aistudio-user-uploads-us-central1/20260313/025745/14a82208-4122-4217-9150-1376d295982e.jpg")`,
-                    backgroundSize: '300px',
-                    backgroundRepeat: 'repeat',
+                    backgroundImage: 'radial-gradient(circle at 20% 20%, rgba(197,160,89,0.35) 0, transparent 22%), radial-gradient(circle at 80% 0%, rgba(255,255,255,0.8) 0, transparent 18%), linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.12))',
                   }}
                 />
                 <div className="flex justify-center mb-4 mt-2">
-                  <span className="bg-white/60 text-luxury-dark/60 text-[11px] px-3 py-1 rounded-lg shadow-sm font-medium">
+                  <span className="bg-white/80 text-luxury-dark/80 text-[11px] px-3 py-1 rounded-lg shadow-sm font-medium">
                     {chat.date}
                   </span>
                 </div>
@@ -507,23 +625,23 @@ const Footer = () => {
     <footer className="bg-luxury-dark text-white py-10 px-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-16">
         <div className="col-span-2">
-          <img src="/logo.png" className="h-16 w-auto mb-6" alt="WMN Logo" />
-          <p className="text-white/50 font-light max-w-sm mb-8">
+          <OptimizedImage src="/logo.png" className="h-16 w-auto mb-6" alt="WMN Logo" width={192} height={64} sizes="192px" />
+          <p className="text-white/75 font-light max-w-sm mb-8">
             Especialistas em criar momentos inesquecíveis através de robes personalizados de alto luxo. Qualidade, sofisticação e carinho em cada ponto.
           </p>
           <div className="flex gap-4">
-            <a href="https://www.instagram.com/withmyname_?igsh=MXZsZDNpNTV1bmk3MA%3D%3D" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-luxury-dark transition-all">
+            <a aria-label="Instagram da WMN Personalizados" href={SITE_INSTAGRAM} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-luxury-dark transition-all">
               <Instagram size={18} />
             </a>
-            <a href="https://wa.me/555132736608" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-luxury-dark transition-all">
+            <a aria-label="Chamar WMN Personalizados no WhatsApp" href={SITE_WHATSAPP} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-luxury-dark transition-all">
               <WhatsAppIcon size={18} />
             </a>
           </div>
         </div>
         
         <div>
-          <h4 className="text-xs uppercase tracking-[0.2em] font-bold mb-6 text-luxury-gold">Links Úteis</h4>
-          <ul className="space-y-4 text-sm text-white/60 font-light">
+          <h3 className="text-xs uppercase tracking-[0.2em] font-bold mb-6 text-luxury-gold">Links Úteis</h3>
+          <ul className="space-y-4 text-sm text-white/80 font-light">
             <li><a href="#collections" className="hover:text-white transition-colors">Coleções</a></li>
             <li><a href="#details" className="hover:text-white transition-colors">Diferenciais</a></li>
             <li><a href="#famous" className="hover:text-white transition-colors">Celebridades</a></li>
@@ -532,15 +650,15 @@ const Footer = () => {
         </div>
 
         <div>
-          <h4 className="text-xs uppercase tracking-[0.2em] font-bold mb-6 text-luxury-gold">Contato</h4>
-          <ul className="space-y-4 text-sm text-white/60 font-light">
+          <h3 className="text-xs uppercase tracking-[0.2em] font-bold mb-6 text-luxury-gold">Contato</h3>
+          <ul className="space-y-4 text-sm text-white/80 font-light">
             <li className="flex items-center gap-2">(051) 3273-6608</li>
             <li className="flex items-center gap-2">São Paulo, Brasil</li>
           </ul>
         </div>
       </div>
       
-      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-white/30">
+      <div className="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-white/70">
         <p>© 2026 WMN Personalizados. Todos os direitos reservados.</p>
         <p>Desenvolvido com sofisticação</p>
       </div>
@@ -550,25 +668,25 @@ const Footer = () => {
 
 const CTASection = () => {
   return (
-    <section className="py-16 md:py-32 px-6 bg-white">
+    <section className="section-shell py-16 md:py-32 px-6 bg-white" aria-labelledby="cta-title">
       <div className="max-w-5xl mx-auto bg-luxury-dark rounded-3xl md:rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden">
         {/* Abstract Background Elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-luxury-gold/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-luxury-gold/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
 
         <div className="relative z-10">
-          <h2 className="text-3xl md:text-6xl text-white mb-8 font-serif">Pronta para viver o <br /><span className="italic text-luxury-gold">seu momento?</span></h2>
+          <h2 id="cta-title" className="text-3xl md:text-6xl text-white mb-8 font-serif">Pronta para viver o <br /><span className="italic text-luxury-gold">seu momento?</span></h2>
           <p className="text-white/60 text-lg mb-12 max-w-xl mx-auto font-light">
             Clique no botão abaixo e fale agora com uma de nossas consultoras para receber um orçamento personalizado.
           </p>
           <a 
-            href="https://wa.me/555132736608" 
-            className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 md:px-12 md:py-5 rounded-full text-base md:text-lg font-medium hover:scale-105 transition-transform duration-300 shadow-xl shadow-[#25D366]/30 whitespace-nowrap"
+            href={SITE_WHATSAPP} 
+            className="whatsapp-cta inline-flex items-center gap-3 px-8 py-4 md:px-12 md:py-5 rounded-full text-base md:text-lg font-medium hover:scale-105 transition-transform duration-300 shadow-xl shadow-[#0d6f36]/30 whitespace-nowrap"
           >
             <WhatsAppIcon size={24} />
             Chamar no WhatsApp
           </a>
-          <p className="mt-6 text-white/30 text-[10px] uppercase tracking-[0.2em]">Resposta em poucos minutos</p>
+          <p className="mt-6 text-white/70 text-[10px] uppercase tracking-[0.2em]">Resposta em poucos minutos</p>
         </div>
       </div>
     </section>
@@ -577,97 +695,50 @@ const CTASection = () => {
 
 const Gallery = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-
-  const images = [
-    "/Galeria/casamento/debut/whatsapp-image-2026-03-12-at-17-21-47.jpeg",
-    "/Galeria/casamento/debut/whatsapp-image-2026-03-12-at-17-21-48-1.jpeg",
-    "/Galeria/casamento/debut/whatsapp-image-2026-03-12-at-17-21-48-2.jpeg",
-    "/Galeria/casamento/debut/whatsapp-image-2026-03-12-at-17-21-48-3.jpeg",
-    "/Galeria/casamento/debut/whatsapp-image-2026-03-12-at-17-21-48.jpeg",
-    "/Galeria/casamento/casamento-01.jpeg",
-    "/Galeria/casamento/casamento-02.jpeg",
-    "/Galeria/casamento/casamento-03.jpeg",
-    "/Galeria/casamento/casamento-04.jpeg",
-    "/Galeria/casamento/casamento-05.jpeg",
-    "/Galeria/casamento/casamento-06.jpeg",
-    "/Galeria/casamento/casamento-07.jpeg",
-    "/Galeria/casamento/casamento-08.jpeg",
-    "/Galeria/casamento/casamento-09.jpeg",
-    "/Galeria/casamento/casamento-10.jpeg",
-    "/Galeria/casamento/casamento-11.jpeg",
-    "/Galeria/casamento/casamento-12.jpeg",
-    "/Galeria/casamento/casamento-13.jpeg",
-    "/Galeria/casamento/casamento-14.jpeg",
-    "/Galeria/casamento/casamento-15.jpeg",
-    "/Galeria/casamento/casamento-16.jpeg",
-    "/Galeria/casamento/casamento-17.jpeg",
-    "/Galeria/casamento/casamento-18.jpeg",
-    "/Galeria/casamento/casamento-19.jpeg",
-    "/Galeria/casamento/casamento-20.jpeg",
-    "/Galeria/casamento/casamento-21.jpeg",
-    "/Galeria/casamento/casamento-22.jpeg",
-    "/Galeria/casamento/casamento-23.jpeg",
-    "/Galeria/casamento/casamento-24.jpeg",
-    "/Galeria/casamento/casamento-25.jpeg",
-    "/Galeria/casamento/casamento-26.jpeg",
-    "/Galeria/casamento/casamento-27.jpeg",
-    "/Galeria/casamento/casamento-28.jpeg",
-    "/Galeria/casamento/casamento-29.jpeg",
-    "/Galeria/casamento/casamento-30.jpeg",
-    "/Galeria/casamento/casamento-31.jpeg",
-    "/Galeria/casamento/casamento-32.jpeg",
-    "/Galeria/casamento/casamento-33.jpeg",
-    "/Galeria/casamento/casamento-34.jpeg",
-    "/Galeria/casamento/casamento-35.jpeg",
-    "/Galeria/casamento/casamento-36.jpeg",
-    "/Galeria/casamento/casamento-37.jpeg",
-    "/Galeria/casamento/casamento-38.jpeg",
-    "/Galeria/casamento/casamento-39.jpeg",
-    "/Galeria/casamento/casamento-40.jpeg",
-    "/Galeria/casamento/casamento-41.jpeg",
-    "/Galeria/casamento/casamento-42.jpeg"
-  ];
+  const visibleImages = isExpanded ? galleryImages : galleryImages.slice(0, INITIAL_GALLERY_COUNT);
+  const remainingImages = Math.max(galleryImages.length - INITIAL_GALLERY_COUNT, 0);
 
   return (
-    <section id="gallery" className="py-16 md:py-32 px-6 bg-white">
+    <section id="gallery" className="section-shell py-16 md:py-32 px-6 bg-white" aria-labelledby="gallery-title">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
-          <span className="text-luxury-gold uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Inspirações</span>
-          <h2 className="text-3xl md:text-5xl mb-6 font-serif">Nossa Galeria</h2>
+          <span className="eyebrow-label uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Inspirações</span>
+          <h2 id="gallery-title" className="text-3xl md:text-5xl mb-6 font-serif">Nossa Galeria</h2>
           <div className="w-20 h-[1px] bg-luxury-gold mx-auto" />
         </div>
-        
-        <div 
-          className={`relative transition-[max-height] duration-1000 ease-in-out ${!isExpanded ? 'max-h-[800px] overflow-hidden' : 'max-h-[10000px]'}`}
-        >
+
+        <div>
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4">
-            {images.map((img, i) => (
+            {visibleImages.map((img, i) => (
               <div 
                 key={i}
-                className="break-inside-avoid overflow-hidden rounded-xl group relative mb-4"
+                className="gallery-card break-inside-avoid overflow-hidden rounded-xl group relative mb-4"
               >
-                <img 
-                  src={encodeURI(img)} 
+                <OptimizedImage 
+                  src={img} 
                   alt={`Galeria ${i + 1}`} 
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
+                  sizes="(min-width: 1024px) 22vw, (min-width: 768px) 30vw, 46vw"
                 />
                 <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             ))}
           </div>
 
-          <div 
-            className={`absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-white via-white/90 to-transparent flex items-end justify-center pb-8 z-10 pointer-events-none transition-opacity duration-700 ease-in-out ${isExpanded ? 'opacity-0' : 'opacity-100'}`}
-          >
+          {!isExpanded && remainingImages > 0 && (
+            <div className="pt-6 text-center">
+              <p className="muted-copy mb-4 text-sm">
+                Carregamento inicial reduzido para performance. Restam {remainingImages} fotos na galeria completa.
+              </p>
             <button 
               onClick={() => setIsExpanded(true)}
-              className={`pointer-events-auto bg-gradient-to-r from-[#c5a059] to-[#d4af37] text-white px-8 md:px-10 py-4 rounded-full font-medium tracking-wide shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2 ${isExpanded ? 'hidden' : ''}`}
+              className="bg-gradient-to-r from-[#c5a059] to-[#d4af37] text-white px-8 md:px-10 py-4 rounded-full font-medium tracking-wide shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 inline-flex items-center gap-2"
             >
               <Sparkles size={18} />
               Ver galeria completa
             </button>
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -677,22 +748,27 @@ const Gallery = () => {
 export default function App() {
   return (
     <div className="min-h-screen selection:bg-luxury-gold selection:text-white">
+      <SeoMetadata />
+      <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
       <Navbar />
       <Hero />
-      <Collections />
-      <Features />
-      <FamousSection />
-      <Testimonials />
-      <Gallery />
-      <CTASection />
+      <main id="main-content">
+        <Collections />
+        <Features />
+        <FamousSection />
+        <Testimonials />
+        <Gallery />
+        <CTASection />
+      </main>
       <Footer />
       
       {/* Floating WhatsApp for Desktop Only */}
       <a 
-        href="https://wa.me/555132736608" 
+        href={SITE_WHATSAPP} 
         target="_blank" 
         rel="noopener noreferrer"
-        className="hidden md:flex fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 items-center gap-2 group"
+        aria-label="Falar com consultora da WMN Personalizados no WhatsApp"
+        className="whatsapp-cta hidden md:flex fixed bottom-8 right-8 z-50 p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 items-center gap-2 group"
       >
         <WhatsAppIcon size={28} />
         <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap font-medium">

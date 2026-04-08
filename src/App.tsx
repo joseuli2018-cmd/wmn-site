@@ -262,7 +262,7 @@ const Hero = () => {
           <span className="italic text-luxury-gold drop-shadow-lg">luxo inesquecível</span>
         </h1>
         <p className="reveal-fade-up reveal-delay-3 text-white text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light drop-shadow-md">
-          Robes de toque de seda e personalização fina para noivas, debutantes e momentos que merecem ser eternizados.
+          Robes em tecidos selecionados e personalização sofisticada para noivas, debutantes e ocasiões que merecem ser eternizadas.
         </p>
         <div className="reveal-fade-up reveal-delay-4 flex flex-col sm:flex-row gap-4 justify-center">
           <a 
@@ -294,7 +294,7 @@ const Collections = () => {
   const items = [
     {
       title: "Casamento: Noivas & Madrinhas",
-      desc: "O making of perfeito com robes de seda personalizados para o seu grande dia.",
+      desc: "O making of perfeito com robes e pijamas personalizados em tecido premium para o seu grande dia.",
       img: COLLECTION_WEDDING_IMAGE,
       tag: "Casamento"
     },
@@ -347,18 +347,18 @@ const Features = () => {
   const features = [
     {
       icon: <Sparkles className="text-luxury-gold" />,
-      title: "Toque de Seda",
-      desc: "Tecidos premium que proporcionam conforto e caimento impecável para fotos."
+      title: "Tecidos Premium",
+      desc: "Tecidos de alta qualidade com toque suave e caimento impecável, ideais para fotos elegantes e momentos especiais."
     },
     {
       icon: <Award className="text-luxury-gold" />,
-      title: "Bordado de Alta Precisão",
-      desc: "Personalização com fios de seda e acabamento de alta costura."
+      title: "Bordado",
+      desc: "Cada peça recebe um bordado exclusivo, feito de forma individual e cuidadosa."
     },
     {
       icon: <Users className="text-luxury-gold" />,
       title: "Atendimento VIP",
-      desc: "Consultoria exclusiva para escolher as cores e fontes que combinam com seu evento."
+      desc: "Consultoria exclusiva para escolher as cores, modelos, tecidos e fontes que combinam com seu evento."
     }
   ];
 
@@ -427,8 +427,7 @@ const FamousSection = () => {
   return (
     <section id="famous" className="section-shell py-16 md:py-32 px-6 bg-white overflow-hidden" aria-labelledby="famous-title">
       <div className="max-w-7xl mx-auto text-center">
-        <span className="eyebrow-label uppercase tracking-[0.3em] text-xs font-semibold mb-4 block">Presença VIP</span>
-        <h2 id="famous-title" className="text-3xl md:text-5xl mb-12 font-serif">Quem já usou WMN</h2>
+        <h2 id="famous-title" className="text-3xl md:text-5xl mb-12 font-serif">Quem já usou With My Name</h2>
         
         <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-y-10 gap-x-6 md:gap-12">
           {famous.map((f, i) => (

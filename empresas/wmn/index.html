@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personalização para Empresas | With My Name</title>
+<meta name="description" content="Personalização para empresas, do bordado à peça pronta. Você já tem as peças? Nós bordamos. Precisa da solução completa? Fornecemos, personalizamos e entregamos prontas. Atendimento para todo o Brasil.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#171512">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="With My Name Empresas">
+<meta property="og:title" content="Personalização para Empresas | With My Name">
+<meta property="og:description" content="Personalização para empresas, do bordado à peça pronta. Bordamos as suas peças ou entregamos o projeto completo.">
+<meta property="og:image" content="./images/hero-arara.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Archivo:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0;background:#fdfbf7;color:#1b1913}
+body{font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+a:hover{color:#a8853f}
+::selection{background:#eadfc6}
+@keyframes heroIn{from{transform:translateY(22px)}to{transform:none}}
+</style>
+</helmet>
+
+<div style="min-width:320px;overflow-x:clip">
+
+<!-- HEADER -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:90;color:#f7f3ea;transition:background .35s ease,color .35s ease;background:{{headerBg}};backdrop-filter:{{headerBlur}};-webkit-backdrop-filter:{{headerBlur}};border-bottom:{{headerBorder}}">
+  <div style="max-width:1320px;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between;gap:24px;color:{{headerColor}}">
+    <a href="#topo" style="display:flex;align-items:center;gap:14px;color:inherit">
+      <span style="font-family:'Playfair Display',serif;font-weight:500;font-size:30px;line-height:1">W</span>
+      <span style="display:flex;flex-direction:column;gap:3px">
+        <span style="font-size:11px;letter-spacing:.34em;font-weight:500">WITH MY NAME</span>
+        <span style="font-size:9px;letter-spacing:.44em;color:#b3925a;font-weight:600">EMPRESAS</span>
+      </span>
+    </a>
+    <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;align-items:center;gap:clamp(18px,2.6vw,36px)">
+        <a href="#solucoes" style="font-size:12px;letter-spacing:.22em;font-weight:500;color:inherit;white-space:nowrap">SOLUÇÕES</a>
+        <a href="#produtos" style="font-size:12px;letter-spacing:.22em;font-weight:500;color:inherit;white-space:nowrap">PRODUTOS</a>
+        <a href="#galeria" style="font-size:12px;letter-spacing:.22em;font-weight:500;color:inherit;white-space:nowrap">GALERIA</a>
+        <a href="#processo" style="font-size:12px;letter-spacing:.22em;font-weight:500;color:inherit;white-space:nowrap">COMO FUNCIONA</a>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:#1e7a4f;color:#ffffff;padding:12px 22px;border-radius:999px;font-size:12px;letter-spacing:.16em;font-weight:600" style-hover="background:#17603d;color:#ffffff">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+          <span>WHATSAPP</span>
+        </a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ openMenu }}" aria-label="Abrir menu" style="display:flex;flex-direction:column;gap:6px;justify-content:center;align-items:flex-end;background:none;border:none;cursor:pointer;color:inherit;padding:12px 2px;min-width:44px;min-height:44px">
+        <span style="display:block;width:24px;height:1.5px;background:currentColor"></span>
+        <span style="display:block;width:16px;height:1.5px;background:currentColor"></span>
+      </button>
+    </sc-if>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:190;background:rgba(10,9,6,.5)"></div>
+  <div style="position:fixed;top:10px;left:10px;right:10px;z-index:200;background:#14120d;color:#f7f3ea;border:1px solid rgba(247,243,234,.1);border-radius:16px;box-shadow:0 30px 60px -24px rgba(0,0,0,.6);padding:14px 20px 20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:2px 0 10px">
+      <span style="display:flex;align-items:center;gap:10px">
+        <span style="font-family:'Playfair Display',serif;font-weight:500;font-size:20px">W</span>
+        <span style="font-size:9px;letter-spacing:.32em">WITH MY NAME</span>
+      </span>
+      <button onClick="{{ closeMenu }}" aria-label="Fechar menu" style="background:none;border:1px solid rgba(247,243,234,.28);border-radius:999px;color:inherit;width:36px;height:36px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center">✕</button>
+    </div>
+    <nav style="display:flex;flex-direction:column">
+      <a href="#solucoes" onClick="{{ closeMenu }}" style="font-size:16px;font-weight:300;letter-spacing:.01em;padding:14px 2px;border-bottom:1px solid rgba(247,243,234,.1);color:rgba(247,243,234,.88)">Soluções</a>
+      <a href="#produtos" onClick="{{ closeMenu }}" style="font-size:16px;font-weight:300;letter-spacing:.01em;padding:14px 2px;border-bottom:1px solid rgba(247,243,234,.1);color:rgba(247,243,234,.88)">Produtos</a>
+      <a href="#galeria" onClick="{{ closeMenu }}" style="font-size:16px;font-weight:300;letter-spacing:.01em;padding:14px 2px;border-bottom:1px solid rgba(247,243,234,.1);color:rgba(247,243,234,.88)">Galeria</a>
+      <a href="#processo" onClick="{{ closeMenu }}" style="font-size:16px;font-weight:300;letter-spacing:.01em;padding:14px 2px;border-bottom:1px solid rgba(247,243,234,.1);color:rgba(247,243,234,.88)">Como funciona</a>
+      <a href="#contato" onClick="{{ closeMenu }}" style="font-size:16px;font-weight:300;letter-spacing:.01em;padding:14px 2px;color:rgba(247,243,234,.88)">Orçamento</a>
+    </nav>
+    <a href="{{ waHref }}" target="_blank" rel="noopener" onClick="{{ closeMenu }}" style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:9px;background:#1e7a4f;color:#ffffff;padding:15px 22px;border-radius:999px;font-size:12px;letter-spacing:.14em;font-weight:600"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg><span>SOLICITAR ORÇAMENTO</span></a>
+    <p style="margin:14px 0 0;text-align:center;font-size:12.5px;color:rgba(247,243,234,.6)">(51) 3273-6608 · Porto Alegre — RS</p>
+  </div>
+</sc-if>
+
+<!-- HERO -->
+<section id="topo" data-screen-label="Hero" data-screen="hero">
+  <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;min-height:100vh;display:flex;align-items:center;background:#211e18;color:#f7f3ea;overflow:hidden">
+      <div style="position:absolute;inset:0;transition:opacity 1.1s ease,transform 6s ease-out;opacity:{{ heroO0 }};transform:{{ heroT0 }}">
+        <img src="./images/hero-bordado-w.jpg" alt="Bordado em produção" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+      </div>
+      <div style="position:absolute;inset:0;transition:opacity 1.1s ease,transform 6s ease-out;opacity:{{ heroO1 }};transform:{{ heroT1 }}">
+        <img src="./images/hero-arara.jpg" alt="Peças personalizadas em arara" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+      </div>
+      <div style="position:absolute;inset:0;transition:opacity 1.1s ease,transform 6s ease-out;opacity:{{ heroO2 }};transform:{{ heroT2 }}">
+        <img src="./images/hero-recepcao.jpg" alt="Peça personalizada em uso" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+      </div>
+      <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(14,12,9,.88) 0%,rgba(14,12,9,.66) 34%,rgba(14,12,9,.2) 60%,rgba(14,12,9,.06) 100%);pointer-events:none"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,12,9,.55) 0%,rgba(14,12,9,0) 40%);pointer-events:none"></div>
+      <button onClick="{{ heroPrev }}" aria-label="Anterior" style="position:absolute;left:clamp(10px,2vw,28px);top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:999px;border:1px solid rgba(247,243,234,.4);background:transparent;color:#f7f3ea;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(247,243,234,.16);color:#f7f3ea">←</button>
+      <button onClick="{{ heroNext }}" aria-label="Próximo" style="position:absolute;right:clamp(10px,2vw,28px);top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:999px;border:1px solid rgba(247,243,234,.4);background:transparent;color:#f7f3ea;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:rgba(247,243,234,.16);color:#f7f3ea">→</button>
+      <div style="position:relative;width:100%;max-width:1320px;margin:0 auto;padding:190px clamp(60px,6vw,96px) 96px;animation:heroIn .9s ease both">
+        <p style="margin:0 0 22px;font-size:12px;letter-spacing:.34em;font-weight:500;color:#d8bc82">WITH MY NAME EMPRESAS</p>
+        <h1 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(40px,4.6vw,68px);line-height:1.08;letter-spacing:-.01em;max-width:20ch;text-wrap:balance">Personalização para empresas, do <em style="font-style:italic;color:#d8bc82">bordado</em> à peça pronta.</h1>
+        <div style="display:flex;flex-direction:column;gap:10px;margin:30px 0 0;max-width:56ch">
+          <p style="margin:0;font-size:18px;font-weight:400;line-height:1.6;color:#f7f3ea">Você já tem as peças? Nós bordamos.</p>
+          <p style="margin:0;font-size:18px;font-weight:400;line-height:1.6;color:#f7f3ea">Precisa da solução completa? Nós fornecemos, personalizamos e entregamos prontas.</p>
+        </div>
+        <p style="margin:24px 0 0;max-width:58ch;font-size:15.5px;font-weight:300;line-height:1.75;color:rgba(247,243,234,.82)">Bordados profissionais e produtos personalizados para empresas, clínicas, restaurantes, hotéis, eventos, equipes e marcas.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:36px">
+          <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#1e7a4f;color:#ffffff;padding:18px 34px;border-radius:999px;font-size:12.5px;letter-spacing:.1em;font-weight:600;white-space:nowrap" style-hover="background:#17603d;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg><span>SOLICITAR ORÇAMENTO NO WHATSAPP</span></a>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;margin-top:32px;font-size:12.5px;letter-spacing:.1em;font-weight:500;color:rgba(247,243,234,.72)">
+          <span>Atendimento para todo o Brasil</span>
+          <span style="color:#c9a468">•</span>
+          <span>Produção sob orçamento</span>
+          <span style="color:#c9a468">•</span>
+          <span>Mais de 20 anos de experiência em bordado</span>
+        </div>
+      </div>
+      <div style="position:absolute;left:0;right:0;bottom:30px;z-index:5;display:flex;justify-content:center;gap:10px">
+        <button onClick="{{ heroGo0 }}" aria-label="Imagem 1" style="width:7px;height:7px;border-radius:999px;border:none;padding:0;cursor:pointer;transition:background .3s;background:{{ heroD0 }}"></button>
+        <button onClick="{{ heroGo1 }}" aria-label="Imagem 2" style="width:7px;height:7px;border-radius:999px;border:none;padding:0;cursor:pointer;transition:background .3s;background:{{ heroD1 }}"></button>
+        <button onClick="{{ heroGo2 }}" aria-label="Imagem 3" style="width:7px;height:7px;border-radius:999px;border:none;padding:0;cursor:pointer;transition:background .3s;background:{{ heroD2 }}"></button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:relative;min-height:92vh;background:#211e18;overflow:hidden;display:flex;flex-direction:column">
+      <div style="position:absolute;inset:0;background-image:url(./images/mobile/hero-1-m.jpg);background-size:cover;background-position:center top;background-repeat:no-repeat;transition:opacity 1.1s ease,transform 6s ease-out;opacity:{{ heroO0 }};transform:{{ heroT0 }}"></div>
+      <div style="position:absolute;inset:0;background-image:url(./images/mobile/hero-2-m.jpg);background-size:cover;background-position:center top;background-repeat:no-repeat;transition:opacity 1.1s ease,transform 6s ease-out;opacity:{{ heroO1 }};transform:{{ heroT1 }}"></div>
+      <div style="position:absolute;inset:0;background-image:url(./images/mobile/hero-3-m.jpg);background-size:cover;background-position:center top;background-repeat:no-repeat;transition:opacity 1.1s ease,transform 6s ease-out;opacity:{{ heroO2 }};transform:{{ heroT2 }}"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(12,10,8,.9) 0%,rgba(12,10,8,.78) 40%,rgba(12,10,8,.62) 72%,rgba(12,10,8,.5) 100%);pointer-events:none"></div>
+      <div style="position:relative;padding:96px 24px 0">
+        <p style="margin:0 0 16px;font-size:11px;letter-spacing:.3em;font-weight:600;color:#d8bc82">WITH MY NAME EMPRESAS</p>
+        <h1 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(32px,8.4vw,42px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance;color:#f7f3ea">Personalização para empresas, do <em style="font-style:italic;color:#d8bc82">bordado</em> à peça pronta.</h1>
+        <div style="display:flex;flex-direction:column;gap:8px;margin:22px 0 0">
+          <p style="margin:0;font-size:16px;font-weight:400;line-height:1.55;color:#f7f3ea">Você já tem as peças? Nós bordamos.</p>
+          <p style="margin:0;font-size:16px;font-weight:400;line-height:1.55;color:#f7f3ea">Precisa da solução completa? Nós fornecemos, personalizamos e entregamos prontas.</p>
+        </div>
+        <p style="margin:18px 0 0;font-size:14.5px;font-weight:300;line-height:1.7;color:rgba(247,243,234,.8)">Bordados profissionais e produtos personalizados para empresas, clínicas, restaurantes, hotéis, eventos, equipes e marcas.</p>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="margin-top:28px;display:flex;align-items:center;justify-content:center;gap:10px;background:#1e7a4f;color:#ffffff;padding:17px 20px;border-radius:999px;font-size:12px;letter-spacing:.08em;font-weight:600;white-space:nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex:0 0 16px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg><span>SOLICITAR ORÇAMENTO</span></a>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:26px;font-size:12px;letter-spacing:.08em;font-weight:500;color:rgba(247,243,234,.78)">
+          <span>Atendimento para todo o Brasil</span>
+          <span style="color:#c9a468">•</span>
+          <span>Produção sob orçamento</span>
+          <span style="color:#c9a468">•</span>
+          <span>Mais de 20 anos de experiência em bordado</span>
+        </div>
+      </div>
+      <div style="position:relative;flex:1;min-height:40px"></div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:20px;padding:0 24px 26px;position:relative;z-index:5">
+        <button onClick="{{ heroPrev }}" aria-label="Anterior" style="width:40px;height:40px;border-radius:999px;border:1px solid rgba(247,243,234,.38);background:rgba(20,18,14,.24);color:#f7f3ea;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:0 0 40px">←</button>
+        <span style="display:flex;align-items:center;gap:10px">
+          <button onClick="{{ heroGo0 }}" aria-label="Imagem 1" style="width:7px;height:7px;border-radius:999px;border:none;padding:0;cursor:pointer;transition:background .3s;background:{{ heroD0 }}"></button>
+          <button onClick="{{ heroGo1 }}" aria-label="Imagem 2" style="width:7px;height:7px;border-radius:999px;border:none;padding:0;cursor:pointer;transition:background .3s;background:{{ heroD1 }}"></button>
+          <button onClick="{{ heroGo2 }}" aria-label="Imagem 3" style="width:7px;height:7px;border-radius:999px;border:none;padding:0;cursor:pointer;transition:background .3s;background:{{ heroD2 }}"></button>
+        </span>
+        <button onClick="{{ heroNext }}" aria-label="Próximo" style="width:40px;height:40px;border-radius:999px;border:1px solid rgba(247,243,234,.38);background:rgba(20,18,14,.24);color:#f7f3ea;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex:0 0 40px">→</button>
+      </div>
+    </div>
+  </sc-if>
+</section>
+
+<!-- DUAS SOLUÇÕES -->
+<section id="solucoes" data-screen-label="Duas soluções" style="background:#f4efe2;scroll-margin-top:70px">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,124px) clamp(20px,4vw,48px)">
+    <p style="margin:0 0 clamp(36px,4vw,52px);font-size:11px;letter-spacing:.34em;font-weight:600;color:#a8853f">DUAS FORMAS DE TRABALHAR COM A GENTE</p>
+    <div style="display:grid;grid-template-columns:{{ duasCols }};gap:clamp(20px,2.4vw,30px)">
+      <div style="background:#fdfbf7;border:1px solid #e3d9c2;border-radius:16px;padding:clamp(26px,3.4vw,48px);display:flex;flex-direction:column;min-width:0;transition:border-color .3s ease,box-shadow .3s ease" style-hover="border-color:#c2ab72;box-shadow:0 24px 50px -30px rgba(27,25,19,.4)">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:999px;background:#f4efe2;border:1px solid #e0d3b4;color:#8a6c2f">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+        </span>
+        <h2 style="margin:26px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,3.4vw,44px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance">Já tem as peças?</h2>
+        <p style="margin:12px 0 0;font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:clamp(20px,2vw,25px);line-height:1.3;color:#8a6c2f">Nós fazemos o bordado.</p>
+        <p style="margin:22px 0 0;font-size:15.5px;font-weight:300;line-height:1.8;color:#5f5a4e">Envie as peças da sua empresa e a sua identidade visual. Desenvolvemos a matriz e realizamos a personalização de acordo com o material e a necessidade do projeto.</p>
+        <a href="{{ waBordado }}" target="_blank" rel="noopener" style="margin-top:auto;padding-top:34px;display:inline-flex">
+          <span style="display:inline-flex;align-items:center;gap:10px;background:#1e7a4f;color:#ffffff;padding:16px 26px;border-radius:999px;font-size:12px;letter-spacing:.1em;font-weight:600;text-align:center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+            <span>QUERO ORÇAR BORDADO</span>
+          </span>
+        </a>
+      </div>
+      <div style="background:#171512;border:1px solid #171512;border-radius:16px;padding:clamp(26px,3.4vw,48px);display:flex;flex-direction:column;min-width:0;color:#f7f3ea">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:999px;background:rgba(201,164,104,.12);border:1px solid rgba(201,164,104,.4);color:#c9a468">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </span>
+        <h2 style="margin:26px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,3.4vw,44px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance">Precisa das peças também?</h2>
+        <p style="margin:12px 0 0;font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:clamp(20px,2vw,25px);line-height:1.3;color:#c9a468">Entregamos tudo pronto.</p>
+        <p style="margin:22px 0 0;font-size:15.5px;font-weight:300;line-height:1.8;color:rgba(247,243,234,.72)">Conte o que sua empresa precisa. Podemos fornecer ou desenvolver as peças, personalizar com a sua marca e entregar o projeto completo.</p>
+        <a href="{{ waCompleta }}" target="_blank" rel="noopener" style="margin-top:auto;padding-top:34px;display:inline-flex">
+          <span style="display:inline-flex;align-items:center;gap:10px;background:#1e7a4f;color:#ffffff;padding:16px 26px;border-radius:999px;font-size:12px;letter-spacing:.1em;font-weight:600;text-align:center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+            <span>QUERO UMA SOLUÇÃO COMPLETA</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section id="produtos" data-screen-label="Produtos" style="scroll-margin-top:70px">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,124px) clamp(20px,4vw,48px)">
+    <p style="margin:0 0 20px;font-size:11px;letter-spacing:.34em;font-weight:600;color:#a8853f">SOLUÇÕES PRONTAS WITH MY NAME</p>
+    <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(32px,4vw,54px);line-height:1.1;letter-spacing:-.01em;max-width:24ch;text-wrap:balance">Roupões | Robes | Bonés | Mantas</h2>
+    <p style="margin:22px 0 0;max-width:62ch;font-size:15.5px;font-weight:300;line-height:1.8;color:#5f5a4e">Produtos já desenvolvidos pela With My Name, personalizados para ações corporativas, equipes, presentes, eventos e experiências de marca.</p>
+    <div style="display:grid;grid-template-columns:{{ prodCols }};gap:clamp(18px,2vw,26px);margin-top:clamp(36px,4.5vw,56px)">
+      <article>
+        <div style="position:relative;padding-top:100%;border-radius:12px;overflow:hidden;background:#f4efe2;border:1px solid rgba(27,25,19,.07);transition:border-color .3s ease,box-shadow .3s ease" style-hover="border-color:#c2ab72;box-shadow:0 20px 44px -28px rgba(27,25,19,.55)">
+          <img src="./images/trabalhos/t02.jpeg" alt="Roupões" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+        </div>
+        <h3 style="margin:18px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(21px,2vw,26px)">Roupões</h3>
+        <p style="margin:6px 0 0;font-size:13px;font-weight:300;letter-spacing:.02em;color:#8a8371">hotéis, spas e presentes</p>
+      </article>
+      <article>
+        <div style="position:relative;padding-top:100%;border-radius:12px;overflow:hidden;background:#f4efe2;border:1px solid rgba(27,25,19,.07);transition:border-color .3s ease,box-shadow .3s ease" style-hover="border-color:#c2ab72;box-shadow:0 20px 44px -28px rgba(27,25,19,.55)">
+          <img src="./images/trabalhos/t12.jpeg" alt="Robes" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+        </div>
+        <h3 style="margin:18px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(21px,2vw,26px)">Robes</h3>
+        <p style="margin:6px 0 0;font-size:13px;font-weight:300;letter-spacing:.02em;color:#8a8371">equipes, eventos e brindes</p>
+      </article>
+      <article>
+        <div style="position:relative;padding-top:100%;border-radius:12px;overflow:hidden;background:#f4efe2;border:1px solid rgba(27,25,19,.07);transition:border-color .3s ease,box-shadow .3s ease" style-hover="border-color:#c2ab72;box-shadow:0 20px 44px -28px rgba(27,25,19,.55)">
+          <img src="./images/trabalhos/t10.jpeg" alt="Bonés" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+        </div>
+        <h3 style="margin:18px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(21px,2vw,26px)">Bonés</h3>
+        <p style="margin:6px 0 0;font-size:13px;font-weight:300;letter-spacing:.02em;color:#8a8371">marcas, operação e ações</p>
+      </article>
+      <article>
+        <div style="position:relative;padding-top:100%;border-radius:12px;overflow:hidden;background:#f4efe2;border:1px solid rgba(27,25,19,.07);transition:border-color .3s ease,box-shadow .3s ease" style-hover="border-color:#c2ab72;box-shadow:0 20px 44px -28px rgba(27,25,19,.55)">
+          <img src="./images/trabalhos/t03.jpeg" alt="Mantas" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+        </div>
+        <h3 style="margin:18px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(21px,2vw,26px)">Mantas</h3>
+        <p style="margin:6px 0 0;font-size:13px;font-weight:300;letter-spacing:.02em;color:#8a8371">presentes e experiências</p>
+      </article>
+    </div>
+    <div style="margin-top:clamp(48px,6vw,80px);background:#f4efe2;border-radius:16px;padding:clamp(30px,4vw,56px);display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,64px);align-items:center">
+      <div style="flex:1 1 380px;min-width:0">
+        <h3 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,2.8vw,36px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance">E muito mais, de acordo com o seu projeto.</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
+          <span style="border:1px solid #d9cfb6;border-radius:999px;padding:9px 18px;font-size:12.5px;letter-spacing:.08em;font-weight:500;color:#4a4437;white-space:nowrap">Jalecos</span>
+          <span style="border:1px solid #d9cfb6;border-radius:999px;padding:9px 18px;font-size:12.5px;letter-spacing:.08em;font-weight:500;color:#4a4437;white-space:nowrap">Uniformes</span>
+          <span style="border:1px solid #d9cfb6;border-radius:999px;padding:9px 18px;font-size:12.5px;letter-spacing:.08em;font-weight:500;color:#4a4437;white-space:nowrap">Camisas</span>
+          <span style="border:1px solid #d9cfb6;border-radius:999px;padding:9px 18px;font-size:12.5px;letter-spacing:.08em;font-weight:500;color:#4a4437;white-space:nowrap">Aventais</span>
+          <span style="border:1px solid #d9cfb6;border-radius:999px;padding:9px 18px;font-size:12.5px;letter-spacing:.08em;font-weight:500;color:#4a4437;white-space:nowrap">Peças corporativas</span>
+        </div>
+      </div>
+      <div style="flex:1 1 320px;min-width:0">
+        <p style="margin:0;font-size:15.5px;font-weight:300;line-height:1.8;color:#5f5a4e">Não encontrou o que procura? Envie uma referência ou conte a sua necessidade. Nossa equipe avalia o desenvolvimento e produção da peça para o seu projeto.</p>
+        <a href="{{ waProjeto }}" target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:10px;background:#1e7a4f;color:#ffffff;padding:16px 26px;border-radius:999px;font-size:12px;letter-spacing:.1em;font-weight:600;white-space:nowrap" style-hover="background:#17603d;color:#ffffff">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+          <span>CONTE O QUE VOCÊ PRECISA</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAIXA SEGMENTOS -->
+<section data-screen-label="Segmentos" style="background:#171512;color:#f7f3ea">
+  <div style="max-width:1260px;margin:0 auto;padding:clamp(56px,7vw,88px) clamp(20px,4vw,40px);text-align:center">
+    <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(26px,3vw,38px);line-height:1.15">Soluções para diferentes negócios</h2>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:clamp(26px,3vw,36px)">
+      <div style="display:flex;flex-wrap:{{ segWrap }};align-items:stretch;justify-content:center;gap:12px 9px;font-size:13px;letter-spacing:.04em;font-weight:500;color:#e8d3a6">
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Clínicas e consultórios</span>
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Restaurantes e gastronomia</span>
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Hotelaria</span>
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Escritórios</span>
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Salões e estética</span>
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Eventos</span>
+      </div>
+      <div style="display:flex;flex-wrap:{{ segWrap }};align-items:stretch;justify-content:center;gap:12px 9px;font-size:13px;letter-spacing:.04em;font-weight:500;color:#e8d3a6">
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Lojas</span>
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Indústrias</span>
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Equipes</span>
+        <span style="border:1px solid rgba(201,164,104,.55);background:rgba(201,164,104,.08);border-radius:999px;padding:9px 15px;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center">Marcas</span>
+      </div>
+    </div>
+    <p style="margin:clamp(28px,3vw,38px) auto 0;max-width:48ch;font-size:15.5px;font-weight:300;line-height:1.8;color:rgba(247,243,234,.66)">Se a sua empresa precisa vestir, presentear ou personalizar, fale com a gente.</p>
+    <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;margin-top:24px;border-bottom:1px solid rgba(201,164,104,.7);padding-bottom:5px;font-size:12px;letter-spacing:.2em;font-weight:600;color:#c9a468">FALAR COM NOSSA EQUIPE →</a>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<sc-if value="{{ showLogos }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Clientes" style="background:#fcf8ef">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,124px) clamp(20px,4vw,48px);text-align:center">
+    <p style="margin:0 0 18px;font-size:11px;letter-spacing:.34em;font-weight:600;color:#a8853f">CLIENTES</p>
+    <h2 style="margin:0 auto;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(28px,3.4vw,44px);line-height:1.15;letter-spacing:-.01em;max-width:26ch">Empresas que já escolheram a With My Name</h2>
+    <div style="display:grid;grid-template-columns:{{ logoCols }};gap:clamp(14px,1.6vw,20px);margin-top:clamp(36px,4.5vw,56px)">
+        <div title="MAG Seguros" style="display:flex;align-items:center;justify-content:center;height:clamp(86px,9vw,106px);border-radius:12px;background:#ffffff;border:1px solid rgba(27,25,19,.09);padding:14px 18px;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 18px 38px -26px rgba(27,25,19,.5);transform:translateY(-3px)">
+          <img src="./images/clientes/mag-seguros.png" alt="MAG Seguros" style="max-height:54%;max-width:100%;width:auto;object-fit:contain;display:block"></img>
+        </div>
+        <div title="Pedro Westphalen — Cirurgia Plástica" style="display:flex;align-items:center;justify-content:center;height:clamp(86px,9vw,106px);border-radius:12px;background:#14120d;border:1px solid #14120d;padding:14px 18px;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 18px 38px -26px rgba(27,25,19,.5);transform:translateY(-3px)">
+          <img src="./images/clientes/pedro-westphalen.png" alt="Pedro Westphalen — Cirurgia Plástica" style="max-height:62%;max-width:100%;width:auto;object-fit:contain;display:block"></img>
+        </div>
+        <div title="Dr. Minuzzi — Cirurgião Plástico" style="display:flex;align-items:center;justify-content:center;height:clamp(86px,9vw,106px);border-radius:12px;background:#ffffff;border:1px solid rgba(27,25,19,.09);padding:14px 18px;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 18px 38px -26px rgba(27,25,19,.5);transform:translateY(-3px)">
+          <img src="./images/clientes/dr-minuzzi.png" alt="Dr. Minuzzi — Cirurgião Plástico" style="max-height:72%;max-width:100%;width:auto;object-fit:contain;display:block"></img>
+        </div>
+        <div title="Body Prime" style="display:flex;align-items:center;justify-content:center;height:clamp(86px,9vw,106px);border-radius:12px;background:#14120d;border:1px solid #14120d;padding:14px 18px;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 18px 38px -26px rgba(27,25,19,.5);transform:translateY(-3px)">
+          <img src="./images/clientes/body-prime.png" alt="Body Prime" style="max-height:46%;max-width:100%;width:auto;object-fit:contain;display:block"></img>
+        </div>
+        <div title="JOY" style="display:flex;align-items:center;justify-content:center;height:clamp(86px,9vw,106px);border-radius:12px;background:linear-gradient(135deg,#6d3010 0%,#c97038 55%,#ea9048 100%);border:1px solid rgba(27,25,19,.12);padding:14px 18px;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 18px 38px -26px rgba(27,25,19,.5);transform:translateY(-3px)">
+          <img src="./images/clientes/joy.png" alt="JOY" style="max-height:30%;max-width:100%;width:auto;object-fit:contain;display:block"></img>
+        </div>
+        <div title="DAF — Eldorado Caminhões" style="display:flex;align-items:center;justify-content:center;height:clamp(86px,9vw,106px);border-radius:12px;background:#ffffff;border:1px solid rgba(27,25,19,.09);padding:14px 18px;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 18px 38px -26px rgba(27,25,19,.5);transform:translateY(-3px)">
+          <img src="./images/clientes/daf-eldorado.png" alt="DAF — Eldorado Caminhões" style="max-height:62%;max-width:100%;width:auto;object-fit:contain;display:block"></img>
+        </div>
+        <div title="RZT Dermatologia" style="display:flex;align-items:center;justify-content:center;height:clamp(86px,9vw,106px);border-radius:12px;background:#ffffff;border:1px solid rgba(27,25,19,.09);padding:14px 18px;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 18px 38px -26px rgba(27,25,19,.5);transform:translateY(-3px)">
+          <img src="./images/clientes/rzt-dermatologia.png" alt="RZT Dermatologia" style="max-height:68%;max-width:100%;width:auto;object-fit:contain;display:block"></img>
+        </div>
+        <div title="LM" style="display:flex;align-items:center;justify-content:center;height:clamp(86px,9vw,106px);border-radius:12px;background:#ffffff;border:1px solid rgba(27,25,19,.09);padding:14px 18px;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 18px 38px -26px rgba(27,25,19,.5);transform:translateY(-3px)">
+          <img src="./images/clientes/lm.png" alt="LM" style="max-height:78%;max-width:100%;width:auto;object-fit:contain;display:block"></img>
+        </div>
+        <div title="MODAB" style="display:flex;align-items:center;justify-content:center;height:clamp(86px,9vw,106px);border-radius:12px;background:#ffffff;border:1px solid rgba(27,25,19,.09);padding:14px 18px;transition:box-shadow .3s ease,transform .3s ease" style-hover="box-shadow:0 18px 38px -26px rgba(27,25,19,.5);transform:translateY(-3px)">
+          <img src="./images/clientes/modab.png" alt="MODAB" style="max-height:38%;max-width:100%;width:auto;object-fit:contain;display:block"></img>
+        </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ showFamosos }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Quem já usou" style="background:#f4efe2">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,124px) clamp(20px,4vw,48px);text-align:center">
+    <p style="margin:0 0 18px;font-size:11px;letter-spacing:.34em;font-weight:600;color:#a8853f">PADRÃO WITH MY NAME</p>
+    <h2 style="margin:0 auto;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(30px,3.6vw,48px);line-height:1.12;letter-spacing:-.01em;max-width:24ch">Quem já usou With My Name</h2>
+    <p style="margin:22px auto 0;max-width:56ch;font-size:15.5px;font-weight:300;line-height:1.8;color:#5f5a4e">Peças personalizadas que já chegaram às mãos de nomes conhecidos — o mesmo bordado e o mesmo acabamento que aplicamos nos projetos das empresas.</p>
+    <div style="display:grid;grid-template-columns:{{ famososCols }};justify-items:center;gap:clamp(28px,3vw,40px) clamp(14px,2vw,26px);margin-top:clamp(38px,4.5vw,58px)">
+        <a href="https://www.instagram.com/paulafeijo" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;gap:14px;color:inherit" style-hover="color:#8a6c2f">
+          <span style="display:block;position:relative;width:clamp(112px,15vw,150px);height:clamp(112px,15vw,150px);border-radius:999px;overflow:hidden;border:1px solid rgba(27,25,19,.08);box-shadow:0 16px 34px -24px rgba(27,25,19,.45);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 44px -22px rgba(27,25,19,.5)">
+            <img src="./images/famosos/paula-feijo.jpg" alt="Paula Feijó" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+          </span>
+          <span style="font-size:11.5px;letter-spacing:.2em;font-weight:600;color:inherit;white-space:nowrap">PAULA FEIJÓ</span>
+        </a>
+        <a href="https://www.instagram.com/michelleheidenn" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;gap:14px;color:inherit" style-hover="color:#8a6c2f">
+          <span style="display:block;position:relative;width:clamp(112px,15vw,150px);height:clamp(112px,15vw,150px);border-radius:999px;overflow:hidden;border:1px solid rgba(27,25,19,.08);box-shadow:0 16px 34px -24px rgba(27,25,19,.45);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 44px -22px rgba(27,25,19,.5)">
+            <img src="./images/famosos/michelle-heiden.jpg" alt="Michelle Heiden" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+          </span>
+          <span style="font-size:11.5px;letter-spacing:.2em;font-weight:600;color:inherit;white-space:nowrap">MICHELLE HEIDEN</span>
+        </a>
+        <a href="https://www.instagram.com/brunamanzon" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;gap:14px;color:inherit" style-hover="color:#8a6c2f">
+          <span style="display:block;position:relative;width:clamp(112px,15vw,150px);height:clamp(112px,15vw,150px);border-radius:999px;overflow:hidden;border:1px solid rgba(27,25,19,.08);box-shadow:0 16px 34px -24px rgba(27,25,19,.45);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 44px -22px rgba(27,25,19,.5)">
+            <img src="./images/famosos/bruna-manzon.jpg" alt="Bruna Manzon" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+          </span>
+          <span style="font-size:11.5px;letter-spacing:.2em;font-weight:600;color:inherit;white-space:nowrap">BRUNA MANZON</span>
+        </a>
+        <a href="https://www.instagram.com/emillyaraujoc" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;gap:14px;color:inherit" style-hover="color:#8a6c2f">
+          <span style="display:block;position:relative;width:clamp(112px,15vw,150px);height:clamp(112px,15vw,150px);border-radius:999px;overflow:hidden;border:1px solid rgba(27,25,19,.08);box-shadow:0 16px 34px -24px rgba(27,25,19,.45);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 44px -22px rgba(27,25,19,.5)">
+            <img src="./images/famosos/emilly-araujo.jpg" alt="Emilly Araújo" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+          </span>
+          <span style="font-size:11.5px;letter-spacing:.2em;font-weight:600;color:inherit;white-space:nowrap">EMILLY ARAÚJO</span>
+        </a>
+        <a href="https://www.instagram.com/stefanibays" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;gap:14px;color:inherit" style-hover="color:#8a6c2f">
+          <span style="display:block;position:relative;width:clamp(112px,15vw,150px);height:clamp(112px,15vw,150px);border-radius:999px;overflow:hidden;border:1px solid rgba(27,25,19,.08);box-shadow:0 16px 34px -24px rgba(27,25,19,.45);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 44px -22px rgba(27,25,19,.5)">
+            <img src="./images/famosos/stefani-bays.jpg" alt="Stéfani Bays" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+          </span>
+          <span style="font-size:11.5px;letter-spacing:.2em;font-weight:600;color:inherit;white-space:nowrap">STÉFANI BAYS</span>
+        </a>
+        <a href="https://www.instagram.com/natanadeleon" target="_blank" rel="noopener" style="display:flex;flex-direction:column;align-items:center;gap:14px;color:inherit" style-hover="color:#8a6c2f">
+          <span style="display:block;position:relative;width:clamp(112px,15vw,150px);height:clamp(112px,15vw,150px);border-radius:999px;overflow:hidden;border:1px solid rgba(27,25,19,.08);box-shadow:0 16px 34px -24px rgba(27,25,19,.45);transition:transform .35s ease,box-shadow .35s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 44px -22px rgba(27,25,19,.5)">
+            <img src="./images/famosos/natana-de-leon.jpg" alt="Natana de Leon" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+          </span>
+          <span style="font-size:11.5px;letter-spacing:.2em;font-weight:600;color:inherit;white-space:nowrap">NATANA DE LEON</span>
+        </a>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- GALERIA -->
+<section id="galeria" data-screen-label="Galeria" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,124px) clamp(20px,4vw,48px);scroll-margin-top:70px">
+  <div style="display:flex;flex-wrap:wrap;gap:20px 60px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(34px,4.5vw,52px)">
+    <div>
+      <p style="margin:0 0 20px;font-size:11px;letter-spacing:.34em;font-weight:600;color:#a8853f">GALERIA</p>
+      <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(32px,4vw,54px);line-height:1.12">Trabalhos entregues.</h2>
+    </div>
+    <p style="margin:0;max-width:38ch;font-size:14.5px;font-weight:300;line-height:1.75;color:#5f5a4e">Projetos reais de clínicas, empresas, hotéis, equipes e eventos.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:{{ galeriaCols }};gap:clamp(18px,2vw,24px)">
+    <figure style="margin:0">
+      <div style="position:relative;padding-top:125%;border-radius:12px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4);transition:box-shadow .35s ease" style-hover="box-shadow:0 26px 52px -24px rgba(27,25,19,.55)"><img src="./images/trabalhos/t04.jpeg" alt="TOALHAS CORPORATIVAS" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img></div>
+      <figcaption style="margin:10px 0 0;font-size:11px;letter-spacing:.18em;color:#8a8371">TOALHAS CORPORATIVAS</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div style="position:relative;padding-top:125%;border-radius:12px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4);transition:box-shadow .35s ease" style-hover="box-shadow:0 26px 52px -24px rgba(27,25,19,.55)"><img src="./images/trabalhos/t09.jpeg" alt="ROBES — CLÍNICA" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img></div>
+      <figcaption style="margin:10px 0 0;font-size:11px;letter-spacing:.18em;color:#8a8371">ROBES — CLÍNICA</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div style="position:relative;padding-top:125%;border-radius:12px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4);transition:box-shadow .35s ease" style-hover="box-shadow:0 26px 52px -24px rgba(27,25,19,.55)"><img src="./images/trabalhos/t07.jpeg" alt="MANTAS — IMOBILIÁRIA" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img></div>
+      <figcaption style="margin:10px 0 0;font-size:11px;letter-spacing:.18em;color:#8a8371">MANTAS — IMOBILIÁRIA</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div style="position:relative;padding-top:125%;border-radius:12px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4);transition:box-shadow .35s ease" style-hover="box-shadow:0 26px 52px -24px rgba(27,25,19,.55)"><img src="./images/trabalhos/t01.jpeg" alt="ROUPÕES COM MONOGRAMA" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img></div>
+      <figcaption style="margin:10px 0 0;font-size:11px;letter-spacing:.18em;color:#8a8371">ROUPÕES COM MONOGRAMA</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div style="position:relative;padding-top:125%;border-radius:12px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4);transition:box-shadow .35s ease" style-hover="box-shadow:0 26px 52px -24px rgba(27,25,19,.55)"><img src="./images/trabalhos/t08.jpeg" alt="ROBES — CLÍNICA DE ESTÉTICA" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img></div>
+      <figcaption style="margin:10px 0 0;font-size:11px;letter-spacing:.18em;color:#8a8371">ROBES — CLÍNICA DE ESTÉTICA</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div style="position:relative;padding-top:125%;border-radius:12px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4);transition:box-shadow .35s ease" style-hover="box-shadow:0 26px 52px -24px rgba(27,25,19,.55)"><img src="./images/trabalhos/t05.jpeg" alt="ROBES EM CETIM — MONOGRAMA" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img></div>
+      <figcaption style="margin:10px 0 0;font-size:11px;letter-spacing:.18em;color:#8a8371">ROBES EM CETIM — MONOGRAMA</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div style="position:relative;padding-top:125%;border-radius:12px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4);transition:box-shadow .35s ease" style-hover="box-shadow:0 26px 52px -24px rgba(27,25,19,.55)"><img src="./images/trabalhos/t11.jpeg" alt="BONÉS E BOLSA PERSONALIZADOS" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img></div>
+      <figcaption style="margin:10px 0 0;font-size:11px;letter-spacing:.18em;color:#8a8371">BONÉS E BOLSA PERSONALIZADOS</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div style="position:relative;padding-top:125%;border-radius:12px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4);transition:box-shadow .35s ease" style-hover="box-shadow:0 26px 52px -24px rgba(27,25,19,.55)"><img src="./images/trabalhos/t06.jpeg" alt="ROBES — EVENTO DE 15 ANOS" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img></div>
+      <figcaption style="margin:10px 0 0;font-size:11px;letter-spacing:.18em;color:#8a8371">ROBES — EVENTO DE 15 ANOS</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div style="position:relative;padding-top:125%;border-radius:12px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4);transition:box-shadow .35s ease" style-hover="box-shadow:0 26px 52px -24px rgba(27,25,19,.55)"><img src="./images/trabalhos/t13.jpeg" alt="ROBES EM CETIM — INICIAIS" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img></div>
+      <figcaption style="margin:10px 0 0;font-size:11px;letter-spacing:.18em;color:#8a8371">ROBES EM CETIM — INICIAIS</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="processo" data-screen-label="Como funciona" style="background:#171512;color:#f7f3ea;scroll-margin-top:70px">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,124px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(40px,5vw,72px)">
+    <div style="flex:{{ passosIntroFlex }};max-width:{{ passosIntroMax }};width:100%;margin:0 auto">
+      <div style="position:sticky;top:120px">
+        <p style="margin:0 0 20px;font-size:11px;letter-spacing:.34em;font-weight:600;color:#c9a468">COMO FUNCIONA</p>
+        <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(32px,4vw,52px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance">Quatro passos até o seu <em style="font-style:italic;color:#c9a468">orçamento</em>.</h2>
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:34px;background:#1e7a4f;color:#ffffff;padding:17px 30px;border-radius:999px;font-size:12.5px;letter-spacing:.1em;font-weight:600;white-space:nowrap" style-hover="background:#17603d;color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg><span>SOLICITAR ORÇAMENTO</span></a>
+        <p style="margin:18px 0 0;font-size:12.5px;font-weight:300;color:rgba(247,243,234,.45)">Resposta no mesmo dia útil.</p>
+      </div>
+    </div>
+    <div style="flex:0 1 660px;min-width:min(100%,320px);max-width:660px;width:100%;margin:0 auto">
+      <div style="position:relative">
+        <div style="position:relative;padding:0 0 clamp(34px,4.5vw,50px) clamp(58px,6vw,68px)">
+          <span style="position:absolute;left:20px;top:40px;bottom:6px;width:1px;background:rgba(201,164,104,.32)"></span>
+          <span style="position:absolute;left:0;top:-6px;width:40px;height:40px;border-radius:999px;background:rgba(201,164,104,.1);border:1px solid rgba(201,164,104,.35);display:flex;align-items:center;justify-content:center;color:#c9a468">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </span>
+          <span style="font-size:11px;letter-spacing:.28em;font-weight:600;color:#c9a468">01</span>
+          <h3 style="margin:12px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(22px,2.4vw,30px);line-height:1.2">Conte o que precisa</h3>
+          <p style="margin:9px 0 0;max-width:52ch;font-size:15px;font-weight:300;line-height:1.75;color:rgba(247,243,234,.66)">Peça, quantidade, referência e prazo.</p>
+        </div>
+        <div style="position:relative;padding:0 0 clamp(34px,4.5vw,50px) clamp(58px,6vw,68px)">
+          <span style="position:absolute;left:20px;top:40px;bottom:6px;width:1px;background:rgba(201,164,104,.32)"></span>
+          <span style="position:absolute;left:0;top:-6px;width:40px;height:40px;border-radius:999px;background:rgba(201,164,104,.1);border:1px solid rgba(201,164,104,.35);display:flex;align-items:center;justify-content:center;color:#c9a468">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          </span>
+          <span style="font-size:11px;letter-spacing:.28em;font-weight:600;color:#c9a468">02</span>
+          <h3 style="margin:12px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(22px,2.4vw,30px);line-height:1.2">Envie sua marca</h3>
+          <p style="margin:9px 0 0;max-width:52ch;font-size:15px;font-weight:300;line-height:1.75;color:rgba(247,243,234,.66)">Mande a logo e, se tiver, uma foto ou referência da peça.</p>
+        </div>
+        <div style="position:relative;padding:0 0 clamp(34px,4.5vw,50px) clamp(58px,6vw,68px)">
+          <span style="position:absolute;left:20px;top:40px;bottom:6px;width:1px;background:rgba(201,164,104,.32)"></span>
+          <span style="position:absolute;left:0;top:-6px;width:40px;height:40px;border-radius:999px;background:rgba(201,164,104,.1);border:1px solid rgba(201,164,104,.35);display:flex;align-items:center;justify-content:center;color:#c9a468">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v4H4z"></path><path d="M6 12h12"></path><path d="M6 16h8"></path><path d="M6 20h5"></path></svg>
+          </span>
+          <span style="font-size:11px;letter-spacing:.28em;font-weight:600;color:#c9a468">03</span>
+          <h3 style="margin:12px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(22px,2.4vw,30px);line-height:1.2">Receba seu orçamento</h3>
+          <p style="margin:9px 0 0;max-width:52ch;font-size:15px;font-weight:300;line-height:1.75;color:rgba(247,243,234,.66)">Nossa equipe avalia a melhor solução para o seu projeto.</p>
+        </div>
+        <div style="position:relative;padding:0 0 0 clamp(58px,6vw,68px)">
+          <span style="position:absolute;left:0;top:-6px;width:40px;height:40px;border-radius:999px;background:rgba(201,164,104,.1);border:1px solid rgba(201,164,104,.35);display:flex;align-items:center;justify-content:center;color:#c9a468">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          </span>
+          <span style="font-size:11px;letter-spacing:.28em;font-weight:600;color:#c9a468">04</span>
+          <h3 style="margin:12px 0 0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(22px,2.4vw,30px);line-height:1.2">Nós produzimos</h3>
+          <p style="margin:9px 0 0;max-width:52ch;font-size:15px;font-weight:300;line-height:1.75;color:rgba(247,243,234,.66)">Bordamos suas peças ou entregamos a solução completa, personalizada.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUÇÃO ESPECIALIZADA -->
+<section data-screen-label="Produção especializada" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,124px) clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,96px);align-items:center">
+  <div style="flex:1.1 1 380px;min-width:0">
+    <p style="margin:0 0 20px;font-size:11px;letter-spacing:.34em;font-weight:600;color:#a8853f">PRODUÇÃO ESPECIALIZADA</p>
+    <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(32px,4vw,54px);line-height:1.12;letter-spacing:-.01em;text-wrap:balance">Conhecimento técnico e padrão de <em style="font-style:italic;color:#a8853f">acabamento</em>.</h2>
+    <p style="margin:26px 0 0;max-width:56ch;font-size:15.5px;font-weight:300;line-height:1.85;color:#5f5a4e">Nossa produção de bordados conta com profissional com mais de 20 anos de experiência, unindo conhecimento técnico ao padrão de acabamento da With My Name.</p>
+    <div style="margin-top:38px;display:flex;flex-direction:column">
+      <div style="border-top:1px solid #e5ddc9;padding:22px 0;display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline">
+        <h3 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;flex:0 0 260px">Bordado de alta definição</h3>
+        <p style="margin:0;flex:1 1 240px;font-size:14px;font-weight:300;line-height:1.7;color:#5f5a4e">Matriz desenvolvida para cada logotipo — densidade, fio e ponto ajustados ao tecido.</p>
+      </div>
+      <div style="border-top:1px solid #e5ddc9;padding:22px 0;display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline">
+        <h3 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;flex:0 0 260px">Peças e tecidos selecionados</h3>
+        <p style="margin:0;flex:1 1 240px;font-size:14px;font-weight:300;line-height:1.7;color:#5f5a4e">Caimento, conforto e durabilidade à altura da marca que a peça carrega.</p>
+      </div>
+      <div style="border-top:1px solid #e5ddc9;border-bottom:1px solid #e5ddc9;padding:22px 0;display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline">
+        <h3 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:21px;flex:0 0 260px">Atendimento empresarial</h3>
+        <p style="margin:0;flex:1 1 240px;font-size:14px;font-weight:300;line-height:1.7;color:#5f5a4e">Uma equipe que acompanha o seu projeto do desenho do bordado à entrega.</p>
+      </div>
+    </div>
+  </div>
+  <div style="flex:1 1 340px;min-width:0;position:relative;padding-bottom:34px">
+    <div style="position:relative;padding-top:125%;border-radius:14px;overflow:hidden;border:1px solid rgba(27,25,19,.07);box-shadow:0 16px 34px -22px rgba(27,25,19,.4)">
+      <img src="./images/atelie-bordado.jpg" alt="Bordado sendo produzido na máquina" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+    </div>
+    <div style="position:absolute;left:-18px;bottom:0;background:#fdfbf7;border:1px solid rgba(27,25,19,.07);border-radius:14px;padding:22px 28px;box-shadow:0 16px 34px -22px rgba(27,25,19,.4)">
+      <p style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:44px;line-height:1">20<span style="color:#a8853f">+</span></p>
+      <p style="margin:6px 0 0;font-size:11px;letter-spacing:.22em;font-weight:600;color:#6d6656">ANOS DE EXPERIÊNCIA EM BORDADO</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="contato" data-screen-label="CTA final" style="position:relative;background:#f7f1e6;color:#1b1913;scroll-margin-top:70px;overflow:hidden">
+  <sc-if value="{{ notMobile }}" hint-placeholder-val="{{ true }}">
+    <div role="img" aria-label="Peça personalizada sendo finalizada" style="position:absolute;inset:0;background-image:url(./images/cena/atelie-mesa.jpg);background-size:cover;background-position:right center;background-repeat:no-repeat"></div>
+    <div style="position:relative;max-width:1320px;margin:0 auto;min-height:clamp(440px,36vw,560px);display:flex;align-items:center;padding:clamp(80px,9vw,120px) clamp(20px,4vw,48px);pointer-events:none">
+      <div style="pointer-events:auto;max-width:min(430px,33%)">
+      <p style="margin:0 0 22px;font-size:11px;letter-spacing:.34em;font-weight:600;color:#8a6c2f">ORÇAMENTO SEM COMPROMISSO</p>
+      <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-.015em;text-wrap:balance">Conte o que sua empresa precisa. Nós cuidamos do <em style="font-style:italic">restante</em>.</h2>
+      <p style="margin:24px 0 0;font-size:15.5px;font-weight:300;line-height:1.8;color:#57503f">Bordamos as suas peças ou entregamos o projeto completo, personalizado e pronto.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;align-items:stretch">
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:1 1 240px;display:inline-flex;align-items:center;justify-content:center;gap:11px;background:#1e7a4f;color:#ffffff;padding:18px 28px;border-radius:999px;font-size:12px;letter-spacing:.1em;font-weight:600;white-space:nowrap" style-hover="background:#17603d;color:#ffffff">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+          <span>CHAMAR NO WHATSAPP</span>
+        </a>
+        <a href="tel:+555132736608" style="flex:1 1 200px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid rgba(30,122,79,.5);color:#17603d;padding:17px 24px;border-radius:999px;font-size:12px;letter-spacing:.1em;font-weight:600;white-space:nowrap" style-hover="background:rgba(30,122,79,.08);color:#17603d"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>(51) 3273-6608</span></a>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#f1dfc8">
+      <div style="padding:72px 24px 40px">
+      <p style="margin:0 0 22px;font-size:11px;letter-spacing:.34em;font-weight:600;color:#8a6c2f">ORÇAMENTO SEM COMPROMISSO</p>
+      <h2 style="margin:0;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(34px,4.4vw,56px);line-height:1.07;letter-spacing:-.015em;max-width:16ch;text-wrap:balance">Conte o que sua empresa precisa. Nós cuidamos do <em style="font-style:italic">restante</em>.</h2>
+      <p style="margin:26px 0 0;max-width:40ch;font-size:16px;font-weight:300;line-height:1.8;color:#57503f">Bordamos as suas peças ou entregamos o projeto completo, personalizado e pronto.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:stretch;gap:12px;margin-top:34px">
+        <a href="{{ waHref }}" target="_blank" rel="noopener" style="flex:1 1 240px;display:inline-flex;align-items:center;justify-content:center;gap:11px;background:#1e7a4f;color:#ffffff;padding:18px 28px;border-radius:999px;font-size:12px;letter-spacing:.1em;font-weight:600;white-space:nowrap" style-hover="background:#17603d;color:#ffffff">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+          <span>CHAMAR NO WHATSAPP</span>
+        </a>
+        <a href="tel:+555132736608" style="flex:1 1 200px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid rgba(30,122,79,.5);color:#17603d;padding:17px 24px;border-radius:999px;font-size:12px;letter-spacing:.1em;font-weight:600;white-space:nowrap" style-hover="background:rgba(30,122,79,.08);color:#17603d"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span>(51) 3273-6608</span></a>
+      </div>
+      </div>
+      <div role="img" aria-label="Peça personalizada finalizada" style="position:relative;padding-top:80.2%;background-image:url(./images/cena/orcamento-mobile.jpg);background-size:cover;background-position:center bottom;background-repeat:no-repeat">
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,#f1dfc8 0%,rgba(241,223,200,0) 20%);pointer-events:none"></div>
+      </div>
+    </div>
+  </sc-if>
+</section>
+
+<!-- FOOTER -->
+<footer data-screen-label="Footer" style="background:#14120d;color:#f7f3ea">
+  <div style="max-width:1320px;margin:0 auto;padding:clamp(64px,8vw,96px) clamp(20px,4vw,48px) 0">
+    <div style="display:flex;flex-wrap:wrap;gap:48px clamp(40px,6vw,100px)">
+      <div style="flex:1.5 1 280px;min-width:0">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font-family:'Playfair Display',serif;font-weight:500;font-size:44px;line-height:1">W</span>
+          <span style="display:flex;flex-direction:column;gap:3px">
+            <span style="font-size:13px;letter-spacing:.34em;font-weight:500">WITH MY NAME</span>
+            <span style="font-size:10.5px;letter-spacing:.44em;color:#c9a468;font-weight:600">EMPRESAS</span>
+          </span>
+        </div>
+        <p style="margin:24px 0 0;max-width:38ch;font-size:15px;font-weight:300;line-height:1.85;color:rgba(247,243,234,.6)">Personalização para empresas, do bordado à peça pronta. Bordamos as suas peças ou entregamos o projeto completo.</p>
+      </div>
+      <div style="flex:1 1 150px;min-width:0">
+        <p style="margin:0 0 18px;font-size:12px;letter-spacing:.28em;font-weight:600;color:#c9a468">NAVEGAÇÃO</p>
+        <nav style="display:flex;flex-direction:column;gap:13px;font-size:15px;font-weight:300;color:rgba(247,243,234,.75)">
+          <a href="#solucoes" style="color:inherit">Soluções</a>
+          <a href="#produtos" style="color:inherit">Produtos</a>
+          <a href="#galeria" style="color:inherit">Galeria</a>
+          <a href="#processo" style="color:inherit">Como funciona</a>
+          <a href="#contato" style="color:inherit">Orçamento</a>
+        </nav>
+      </div>
+      <div style="flex:1 1 300px;min-width:0">
+        <p style="margin:0 0 18px;font-size:12px;letter-spacing:.28em;font-weight:600;color:#c9a468">CONTATO</p>
+        <div style="display:flex;flex-direction:column;gap:15px;font-size:15px;font-weight:300;color:rgba(247,243,234,.75)">
+          <a href="tel:+555132736608" style="display:flex;align-items:center;gap:11px;color:inherit" style-hover="color:#e5c88c">
+            <svg width="17" height="17" viewBox="0 0 24 24" style="flex:0 0 17px;color:#c9a468" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>(51) 3273-6608</span>
+          </a>
+          <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:11px;color:inherit" style-hover="color:#e5c88c">
+            <svg width="17" height="17" viewBox="0 0 24 24" style="flex:0 0 17px;color:#c9a468" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26C2.167 6.443 6.602 2.01 12.054 2.01c2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.993c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a href="mailto:withmynamepersonalizados@gmail.com" style="display:flex;align-items:center;gap:11px;color:inherit" style-hover="color:#e5c88c">
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex:0 0 16px;color:#c9a468" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"></rect><path d="M3 6.5l9 6 9-6"></path></svg>
+            <span style="white-space:nowrap;font-size:14px">withmynamepersonalizados@gmail.com</span>
+          </a>
+          <span style="display:flex;align-items:center;gap:11px">
+            <svg width="17" height="17" viewBox="0 0 24 24" style="flex:0 0 17px;color:#c9a468" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"></path><circle cx="12" cy="11" r="2.6"></circle></svg>
+            <span>Porto Alegre — RS | Atendimento para todo o Brasil</span>
+          </span>
+        </div>
+      </div>
+      <div style="flex:1 1 180px;min-width:0">
+        <p style="margin:0 0 18px;font-size:12px;letter-spacing:.28em;font-weight:600;color:#c9a468">REDES SOCIAIS</p>
+        <div style="display:flex;flex-direction:column;gap:15px;font-size:15px;font-weight:300;color:rgba(247,243,234,.75)">
+          <a href="https://www.instagram.com/withmyname_" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:11px;color:inherit" style-hover="color:#e5c88c">
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex:0 0 16px;color:#c9a468" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle></svg>
+            <span>@withmyname_</span>
+          </a>
+          <a href="https://www.facebook.com/withmyname" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:11px;color:inherit" style-hover="color:#e5c88c">
+            <svg width="16" height="16" viewBox="0 0 24 24" style="flex:0 0 16px;color:#c9a468" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.45 2.91h-2.33V22c4.78-.76 8.45-4.92 8.45-9.94z"></path></svg>
+            <span>/withmyname</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between;border-top:1px solid rgba(247,243,234,.12);margin-top:clamp(48px,6vw,72px);padding:26px 0 30px;font-size:13px;font-weight:300;color:rgba(247,243,234,.45)">
+      <span>© 2026 With My Name — Todos os direitos reservados.</span>
+      <span>Personalização para empresas</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;whatsappNumber&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;555132736608&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Contato&quot;},
+  &quot;whatsappMessage&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Olá! Quero solicitar um orçamento de personalização para a minha empresa.&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Contato&quot;},
+  &quot;showLogos&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Seções&quot;},
+  &quot;showFamosos&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Seções&quot;}
+}">
+class Component extends DCLogic {
+  state = { scrolled: false, menuOpen: false, w: (typeof window !== 'undefined' ? window.innerWidth : 1280), h: 0 };
+  componentDidMount() {
+    document.documentElement.lang = 'pt-BR';
+    this._onScroll = () => {
+      const s = window.scrollY > 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    this._onResize = () => {
+      const w = window.innerWidth;
+      if (w !== this.state.w) this.setState({ w });
+    };
+    this._heroTimer = setInterval(() => this.setState(s => ({ h: (s.h + 1) % 3 })), 5000);
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onResize);
+    this._onScroll();
+    this._onResize();
+  }
+  restartHero() {
+    clearInterval(this._heroTimer);
+    this._heroTimer = setInterval(() => this.setState(s => ({ h: (s.h + 1) % 3 })), 5000);
+  }
+  componentWillUnmount() {
+    clearInterval(this._heroTimer);
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+  }
+  renderVals() {
+    const { scrolled, menuOpen, w, h } = this.state;
+    const isMobile = w < 1000;
+    const num = String(this.props.whatsappNumber ?? '555132736608').replace(/\D/g, '');
+    const wa = (t) => 'https://wa.me/' + num + '?text=' + encodeURIComponent(t);
+    const msg = this.props.whatsappMessage ?? 'Olá! Quero solicitar um orçamento de personalização para a minha empresa.';
+    const setH = (n) => () => { this.restartHero(); this.setState({ h: (n + 3) % 3 }); };
+    const dot = (n) => h === n ? '#f7f3ea' : 'rgba(247,243,234,.32)';
+    return {
+      heroO0: h === 0 ? 1 : 0, heroO1: h === 1 ? 1 : 0, heroO2: h === 2 ? 1 : 0,
+      heroD0: dot(0), heroD1: dot(1), heroD2: dot(2),
+      heroGo0: setH(0), heroGo1: setH(1), heroGo2: setH(2),
+      heroT0: h === 0 ? 'scale(1)' : 'scale(1.05)',
+      heroT1: h === 1 ? 'scale(1)' : 'scale(1.05)',
+      heroT2: h === 2 ? 'scale(1)' : 'scale(1.05)',
+      heroPrev: () => { this.restartHero(); this.setState(s => ({ h: (s.h + 2) % 3 })); },
+      heroNext: () => { this.restartHero(); this.setState(s => ({ h: (s.h + 1) % 3 })); },
+      duasCols: w < 860 ? '1fr' : '1fr 1fr',
+      segWrap: w < 700 ? 'wrap' : 'nowrap',
+      passosIntroFlex: w < 1080 ? '1 1 100%' : '1 1 300px',
+      passosIntroMax: w < 1080 ? '660px' : '420px',
+      prodCols: w < 620 ? '1fr 1fr' : (w < 1000 ? 'repeat(2,1fr)' : 'repeat(4,1fr)'),
+      galeriaCols: w < 620 ? 'repeat(2,1fr)' : (w < 1000 ? 'repeat(2,1fr)' : 'repeat(3,1fr)'),
+      famososCols: w < 560 ? 'repeat(2,1fr)' : (w < 1000 ? 'repeat(3,1fr)' : 'repeat(6,1fr)'),
+      logoCols: w < 620 ? 'repeat(2,1fr)' : (w < 1000 ? 'repeat(3,1fr)' : 'repeat(5,1fr)'),
+      isMobile,
+      notMobile: !isMobile,
+      menuOpen: menuOpen && isMobile,
+      openMenu: () => this.setState({ menuOpen: true }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      headerBg: scrolled ? 'rgba(253,251,247,.94)' : 'transparent',
+      headerBlur: scrolled ? 'blur(12px) saturate(1.1)' : 'none',
+      headerBorder: scrolled ? '1px solid rgba(27,25,19,.09)' : '1px solid transparent',
+      headerColor: scrolled ? '#1b1913' : '#f7f3ea',
+      waHref: wa(msg),
+      waBordado: wa('Olá! Já tenho as peças e quero orçar o bordado.'),
+      waCompleta: wa('Olá! Preciso das peças e do bordado — quero uma solução completa.'),
+      waProjeto: wa('Olá! Quero contar o que a minha empresa precisa e avaliar o desenvolvimento da peça.'),
+      showLogos: this.props.showLogos ?? true,
+      showFamosos: this.props.showFamosos ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>
